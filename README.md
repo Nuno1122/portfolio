@@ -40,6 +40,7 @@
    [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=ja)
 
    郵便番号からも緯度/経度を取得できるようだ。精度は高くないみたいだが、　一旦これで予定
+   
 　
 ・朝活ルーティーンをタスク化させて、打刻後すぐに着手できるよう表示させる。（習慣化作りのきっかけを作る）
 

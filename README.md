@@ -35,9 +35,7 @@
  
    【おはこん番地は！？API】　http://labs.bitmeister.jp/ohakon/index.cgi
 
-   緯度/経度はどうやって取得するか？　　GPSは持ってない→住所から取得する。
-
-   住所から緯度/経度はどうやって取得するか？　GoogleMAPのWebAPIがある。
+   住所から緯度/経度を取得　　GoogleMAPのWebAPI。
 
    [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=ja)
 

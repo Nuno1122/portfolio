@@ -35,11 +35,7 @@
  
    【おはこん番地は！？API】　http://labs.bitmeister.jp/ohakon/index.cgi
 
-   住所から緯度/経度を取得　　GoogleMAPのWebAPI。
-
-   [Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=ja)
-
-   郵便番号からも緯度/経度を取得できるようだ。精度は高くないみたいだが、一旦これで予定
+   住所から緯度/経度を取得　　GoogleMAPのWebAPI。[Geocoding API](https://developers.google.com/maps/documentation/geocoding/start?hl=ja)　郵便番号からも緯度/経度を取得できるらしい。精度は高くないみたいだが、一旦これで予定
    
 ・朝活ルーティーンをタスク化させて、打刻後すぐに着手できるよう表示させる。（習慣化作りのきっかけを作る）
 

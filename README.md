@@ -24,16 +24,13 @@
 
 <追加予定>
 　・学習開始ボタンを押した後に、タイマーで時間を測り、棒グラフで出力させる（積み上げを実感させる）
+ 
 　・日の出時間をAPIを使い出力し、日光を浴びるきっかけを作る
-　　　**【おはこん番地は！？API】**
-　　　http://labs.bitmeister.jp/ohakon/index.cgi
-　　**緯度/経度はどうやって取得するか？**
-　　GPSは持ってない→住所から取得する
-   **住所から緯度/経度はどうやって取得するか？**
- 　 GoogleMAPのWebAPIがある。[Geocoding API](https://developers.google.com/maps/docume  
+　　　**【おはこん番地は！？API】** http://labs.bitmeister.jp/ohakon/index.cgi
+　　**緯度/経度はどうやって取得するか？** GPSは持ってない→住所から取得する
+ **住所から緯度/経度はどうやって取得するか？** GoogleMAPのWebAPIがある。[Geocoding API](https://developers.google.com/maps/docume  
  　ntation/geocoding/start?hl=ja)郵便番号からも緯度/経度を取得できるようだ。精度は高くないみたいだが、　一旦これで予定
-　・朝活ルーティーンをタスク化させて、打刻後すぐに着手できるよう表示させる。
-　　（習慣化作りのきっかけを作る）
+　・朝活ルーティーンをタスク化させて、打刻後すぐに着手できるよう表示させる。（習慣化作りのきっかけを作る）
 　・朝活におすすめの音楽をyoutubeで引っ張ってくる。投稿型にして、学習開始直後、すぐ流せるようにする。
 　・他ユーザーをお気に入り登録（他ユーザーの打刻状況や、積み上げ状況、やることを閲覧できる）
 

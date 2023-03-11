@@ -1,5 +1,8 @@
 # portfolio
 
+## ER図
+https://drive.google.com/file/d/1SIZjWR66RoF40pZJffNIQgrD504SYaPZ/view?usp=sharing
+
 
 ## 画面遷移図
 https://www.figma.com/file/AZOsDuJ7keBIihRfMxLWE0/%E6%9C%9D%E6%B4%BB%E3%82%A2%E3%83%97%E3%83%AA%EF%BC%88%E4%BB%AE%EF%BC%89?node-id=0%3A1&t=DHOp2uIPpBFy4pT9-1

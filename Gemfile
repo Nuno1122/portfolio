@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 
 # UI/UX
 gem 'rails-i18n'
+gem 'enum_help'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

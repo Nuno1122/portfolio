@@ -49,6 +49,9 @@ gem "bootsnap", require: false
 gem 'rails-i18n'
 gem 'enum_help'
 
+# Schema Information
+gem 'annotate'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

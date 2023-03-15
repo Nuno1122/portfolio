@@ -60,6 +60,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem 'better_errors'
 
 # Test
 gem 'rspec-rails'

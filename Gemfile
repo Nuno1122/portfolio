@@ -62,7 +62,7 @@ group :development, :test do
 # Test
 gem 'rspec-rails'
 gem 'capybara'
-
+gem 'webdrivers'
 end
 
 group :development do

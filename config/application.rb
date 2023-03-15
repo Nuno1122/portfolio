@@ -34,5 +34,10 @@ module Portfolio
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generator do |g|
+      g.helper false
+      g.skip_routes
+    end
   end
 end

@@ -9,8 +9,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to login_path, notice: 'User was successfully created.'
+      redirect_to posts_path, success: t('.success')
     else
+      flash.now[:error] = t('.fail')
       render :new, status: :unprocessable_entity
     end
   end
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy!
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    redirect_to users_url, success: t('.success')
   end
 
   private

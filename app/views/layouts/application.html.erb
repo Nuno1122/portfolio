@@ -13,6 +13,7 @@
   </head>
 
   <body>
+  <%= render logged_in? ? 'shared/header' : 'shared/before_login_header' %>
     <%= yield %>
   </body>
 </html>

@@ -12,7 +12,17 @@ class UserSessionsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-	
+
+  def guest_login
+    @guest_user = User.create!(
+      name: 'ゲストユーザー',
+      email: "#{SecureRandom.alphanumeric(10)}@example.com",
+      password: 'password',
+      password_confirmation: 'password'
+    )
+    auto_login(@guest_user)
+    redirect_back_or_to posts_path, success: t('.success')
+  end
 
   def destroy
     logout

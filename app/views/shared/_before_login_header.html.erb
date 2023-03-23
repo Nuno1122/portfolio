@@ -13,21 +13,16 @@
       <!-- logo - end -->
 
       <!-- nav - start -->
-      <%= link_to "Home", "#", class: "text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700" %>
-      <%= link_to "#", class: "inline-flex items-center gap-1 text-lg font-semibold text-indigo-500" do %>
-      Features
-      <%= content_tag :svg, class: "h-5 w-5 text-gray-800", viewBox: "0 0 20 20", fill: "currentColor" do %>
-      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-      <% end %>
-      <% end %>
-      <%= link_to "Pricing", "#", class: "text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700" %>
-      <%= link_to "About", "#", class: "text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700" %>
+      
       <!-- nav - end -->
 
       <!-- buttons - start -->
-      <%= link_to (t 'defaults.login'), login_path, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>
+      <div class="text-right">
+      <%= link_to (t 'defaults.guest_user'), guest_login_path, data: { turbo_method: :post }, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>
+      <%= link_to (t 'defaults.login'), login_path, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>&nbsp;&nbsp;
       <%= link_to (t 'defaults.sign_up'), new_user_path, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
-      
+      </div>
+
       <!-- buttons - end -->
     </header>
 

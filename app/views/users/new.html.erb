@@ -11,7 +11,7 @@
    
     <!-- form - start -->
     <%= form_with model: @user, local: true do |f| %>
-      
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div class="card-body">
       <div class="flex flex-col gap-4 p-4 md:p-8">

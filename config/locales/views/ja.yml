@@ -1,0 +1,42 @@
+ja:
+  defaults:
+    login: ログイン
+    guest_login: ゲストログイン
+    logout: ログアウト
+    sign_up: 新規登録
+    register: 登録
+    required: 必須
+    guest_user: ゲストユーザー
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: ユーザー登録が完了しました
+      fail: ユーザー登録に失敗しました
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードをお忘れの方はこちら'
+      register: 'こちら'
+      guest_user_login: ゲストユーザーとしてログイン
+    create:
+      success: ログインしました
+      fail: ログインできませんでした
+    destroy:
+      success: ログアウトしました
+    guest_login:
+      success: ゲストユーザーとしてログインしました
+  tops:
+    start_now: さっそくつかってみる!
+  boards:
+    index:
+      title: '掲示板一覧'
+    new:
+      title: '掲示板作成'
+    bookmarks:
+      title: 'ブックマーク一覧'
+  profiles:
+    show:
+      title: 'プロフィール'

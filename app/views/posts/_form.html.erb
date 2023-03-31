@@ -1,0 +1,14 @@
+<!-- form - start -->
+    <%= form_with model: @post, local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+      
+        <div class="sm:col-span-2">
+          
+          <%= f.text_area :content, class: "h-60 w-80 rounded border bg-gray-40 px-15 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring", id: "message" %>
+        </div>
+        
+        <div class="flex flex-col items-center">
+          <%= f.submit  (t 'posts.create.post'), class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+        </div>
+      <% end %>
+    <!-- form - end -->

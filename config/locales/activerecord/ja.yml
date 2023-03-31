@@ -9,3 +9,5 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+      post:
+        content: メッセージ

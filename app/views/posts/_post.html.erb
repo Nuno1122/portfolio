@@ -17,6 +17,9 @@
                 </div>
                 <div class="px-2">
                     <div class="text-sm leading-5 py-4 text-gray-600 dark:text-gray-200"><%= post.content %></div>
+                   <% if current_user.own?(post) %>
+                    <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活", title: 'Twitter', target: '_blank' %>
+                    <% end %>
                     <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500"><%= l post.created_at, format: :long %></div>
                     <div tabindex="0" class="focus:outline-none flex">
                         <div class="py-2 px-4 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#dogecoin</div>

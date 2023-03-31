@@ -12,10 +12,9 @@
         <p class="mb-4 text-center text-lg text-indigo-200 sm:text-xl md:mb-8">Very proud to introduce</p>
         <h1 class="mb-8 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl">朝活を楽しく継続させたいあなたへ！！</h1>
 
-      <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
-        <%= link_to (t 'tops.start_now'), "login", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
-        <%= link_to (t 'defaults.sign_up'), "users/new", class: "inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base" %>
-      </div>
+        <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
+        <%= link_to (t 'tops.start_now'), guest_login_path, data: { turbo_method: :post }, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+        </div>
       </div>
       <!-- text end -->
     </section>

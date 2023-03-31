@@ -30,13 +30,14 @@ ja:
       success: ゲストユーザーとしてログインしました
   tops:
     start_now: さっそくつかってみる!
-  boards:
+  posts:
     index:
-      title: '掲示板一覧'
+      title: '開始宣言一覧'
+      no_result: '投稿がありません。'
     new:
-      title: '掲示板作成'
-    bookmarks:
-      title: 'ブックマーク一覧'
-  profiles:
-    show:
-      title: 'プロフィール'
+      title: 朝活開始メッセージ作成
+      content: メッセージ
+    create:
+      success: 朝活開始宣言が完了しました
+      fail: 朝活開始宣言に失敗しました
+      post: 投稿する

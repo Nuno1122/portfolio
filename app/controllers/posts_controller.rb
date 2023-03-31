@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-  end  
+  end
 
   def create
     @post = current_user.posts.build(post_params)
@@ -18,7 +18,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def show; end
 
   def destroy
@@ -26,15 +25,13 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: '投稿を削除しました。'
   end
 
-
   private
 
   def post_params
     params.require(:post).permit(:content)
   end
 
-def set_post
+  def set_post
     @post = Post.find(params[:id])
   end
-  
 end

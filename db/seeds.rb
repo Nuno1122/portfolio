@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.create!(
+  name: 'test',
+  email: Faker::Internet.email,
+  password: 'password',
+  password_confirmation: 'password'
+)
+
+10.times do
+  User.create!(
+    name: Faker::Name.unique.first_name,
+    email: Faker::Internet.email,
+    password: 'password',
+    password_confirmation: 'password'
+  )
+end
+
+20.times do
+  Post.create!(
+    user: User.offset(rand(User.count)).first,
+    content: Faker::Lorem.sentence
+  )
+end

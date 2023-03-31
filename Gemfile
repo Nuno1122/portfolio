@@ -75,6 +75,7 @@ group :development, :test do
   # Test
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'faker', '~> 3.1'
   gem 'rspec-rails'
   gem 'webdrivers'
 end

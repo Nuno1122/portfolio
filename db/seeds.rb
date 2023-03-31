@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 User.create!(
-  name: "test",
+  name: 'test',
   email: Faker::Internet.email,
-  password: "password",
-  password_confirmation: "password"
+  password: 'password',
+  password_confirmation: 'password'
 )
 
 10.times do

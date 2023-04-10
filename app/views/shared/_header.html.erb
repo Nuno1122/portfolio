@@ -2,29 +2,18 @@
     <div class="bg-white pb-6 sm:pb-8 lg:pb-12">
       <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
         <header class="mb-4 flex items-center justify-between py-4 md:py-8">
-          <!-- logo - start -->
-          <%= link_to(morning_activity_logs_path, class: "text-black-800 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl", "aria-label": "logo") do %>
+        <!-- logo - start -->
+        <%= link_to(home_screens_path, class: "text-black-800 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl", "aria-label": "logo") do %>
         おはログ!!🌞
-      <% end %>
-      <!-- logo - end -->
+        <% end %>
+        <!-- logo - end -->
   
       <!-- nav - start -->
       <p><%= current_user.name %>さん</p>
       <!-- nav - end -->
   
       <!-- buttons - start -->
-      
-              <%= link_to "朝活開始メッセージ", "posts/new", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
-            
-            
-            
-              <%= link_to "本日の朝活ユーザー一覧", "posts", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
-          
-              <%= link_to "ランキング", "#", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
-            
       <%= link_to((t 'defaults.logout'), logout_path, data: { turbo_method: :delete }, class: "rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:inline-block") %>
-  
-      
       <!-- buttons - end -->
     </header>
   </div>

@@ -1,3 +1,4 @@
+
 <% if current_user && current_user.start_time_plan && current_user.start_time_plan.start_time %>
     <h1>目標朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %></h1>
     <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) %>

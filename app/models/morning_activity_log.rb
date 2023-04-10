@@ -22,4 +22,16 @@
 class MorningActivityLog < ApplicationRecord
   belongs_to :user
   belongs_to :start_time_plan
+
+  ALLOWED_START_TIME = Time.zone.parse("03:00:00")
+  ALLOWED_END_OFFSET = 59.seconds
+
+  def achieved?
+    return false if started_time.blank? || start_time_plan.blank?
+  
+    allowed_start_time = start_time_plan.start_time.change(hour: ALLOWED_START_TIME.hour, min: ALLOWED_START_TIME.min, sec: ALLOWED_START_TIME.sec)
+    allowed_end_time = start_time_plan.start_time + ALLOWED_END_OFFSET
+  
+    (started_time >= allowed_start_time) && (started_time <= allowed_end_time)
+  end
 end

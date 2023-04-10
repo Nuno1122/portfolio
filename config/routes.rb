@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
   resources :users, only: %i[new create destroy]
   resources :posts, only: %i[new create index destroy]
-  resources :start_time_plans, only: [:new, :create, :edit, :update]
+  resources :start_time_plans, only: %i[new create edit update]
 end

@@ -19,6 +19,6 @@
 FactoryBot.define do
   factory :start_time_plan do
     user { nil }
-    start_time { "2023-04-09 17:24:50" }
+    start_time { '2023-04-09 17:24:50' }
   end
 end

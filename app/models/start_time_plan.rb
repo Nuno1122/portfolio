@@ -27,7 +27,7 @@ class StartTimePlan < ApplicationRecord
     return if start_time.blank?
 
     allowed_start_time = 4.hours
-    allowed_end_time = 10.hours
+    allowed_end_time = 20.hours
 
     unless start_time.seconds_since_midnight.between?(allowed_start_time, allowed_end_time)
       errors.add(:start_time, :not_within_allowed_range)

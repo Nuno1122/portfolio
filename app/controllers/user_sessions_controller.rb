@@ -25,7 +25,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    logout
+    reset_session
     redirect_to root_path, success: t('.success')
   end
 end

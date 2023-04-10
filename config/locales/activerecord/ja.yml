@@ -3,6 +3,12 @@ ja:
     models:
       user: 'ユーザー'
       board: '掲示板'
+    errors:
+      models:
+        start_time_plan:
+          attributes:
+            start_time:
+              not_within_allowed_range: "は4:00から10:00の間で設定してください"
     attributes:
       user:
         name: 'ユーザーネーム'
@@ -11,3 +17,5 @@ ja:
         password_confirmation: 'パスワード確認'
       post:
         content: メッセージ
+      start_time_plan:
+        start_time: "目標朝活開始時刻"

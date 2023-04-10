@@ -10,8 +10,14 @@
               <%= @achieved_count %>
             </div>
             <div class="flex flex-col items-center">
-              <%= render partial: 'start_time_plans/start_time' %>
-            </div>
+             <% if current_user && current_user.start_time_plan && current_user.start_time_plan.start_time %>
+                <h1>目標朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %></h1>
+                    <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) %>
+              <% else %>
+                <h1>目標朝活開始時刻が設定されていません。</h1>
+                    <%= link_to t('start_time_plans.set_target_start_time'), new_start_time_plan_path %>
+              <% end %>
+             </div>
             <%= form_with(model: @morning_activity_log, url: morning_activity_logs_path, local: true) do |f| %>
                 <div class="flex flex-col gap-4 p-4 md:p-8">
                 <%= f.hidden_field :started_time %>

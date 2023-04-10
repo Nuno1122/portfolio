@@ -14,10 +14,13 @@
 
       <!-- buttons - start -->
       <div class="text-right">
-      <%= link_to (t 'defaults.guest_user'), guest_login_path, data: { turbo_method: :post }, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>
+      <%= button_to (t 'defaults.guest_user'), guest_login_path, method: :post, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>
+      </div>
+      <div class="text-right">
       <%= link_to (t 'defaults.login'), login_path, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>&nbsp;&nbsp;
       <%= link_to (t 'defaults.sign_up'), new_user_path, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
       </div>
+    
 
       <!-- buttons - end -->
     </header>

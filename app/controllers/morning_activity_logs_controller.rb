@@ -1,6 +1,7 @@
 class MorningActivityLogsController < ApplicationController
     def index
         @morning_activity_logs = current_user.morning_activity_logs.includes(:start_time_plan)
+        @achieved_count = current_user.morning_activity_logs.count
     end
 
     def create

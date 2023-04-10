@@ -1,6 +1,6 @@
 class StartTimePlansController < ApplicationController
   def new
-    @start_time_plan = current_user.build_start_time_plan
+    @start_time_plan = current_user.create_start_time_plan
   end
 
   def create

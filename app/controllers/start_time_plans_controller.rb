@@ -6,7 +6,7 @@ class StartTimePlansController < ApplicationController
   def create
     @start_time_plan = current_user.build_start_time_plan(start_time_plan_params)
     if @start_time_plan.save
-      redirect_to home_screens_path, success: t('.success')
+      redirect_to morning_activity_logs_path, success: t('.success')
     else
       render :new
     end
@@ -19,7 +19,7 @@ class StartTimePlansController < ApplicationController
   def update
     @start_time_plan = current_user.start_time_plan
     if @start_time_plan.update(start_time_plan_params)
-      redirect_to home_screens_path, success: t('.success')
+      redirect_to morning_activity_logs_path, success: t('.success')
     else
       render :edit
     end

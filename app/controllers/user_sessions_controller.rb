@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to home_screens_path, success: t('.success')
+      redirect_back_or_to morning_activity_logs_path, success: t('.success')
     else
       flash.now[:error] = t('.fail')
       render :new, status: :unprocessable_entity
@@ -21,7 +21,7 @@ class UserSessionsController < ApplicationController
       password_confirmation: 'password'
     )
     auto_login(@guest_user)
-    redirect_back_or_to posts_path, success: t('.success')
+    redirect_back_or_to morning_activity_logs_path, success: t('.success')
   end
 
   def destroy

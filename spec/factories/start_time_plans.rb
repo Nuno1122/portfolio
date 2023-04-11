@@ -2,11 +2,11 @@
 #
 # Table name: start_time_plans
 #
-#  id         :uuid             not null, primary key
+#  id         :bigint           not null, primary key
 #  start_time :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :uuid             not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #

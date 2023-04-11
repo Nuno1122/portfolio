@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create destroy]
   resources :posts, only: %i[new create index destroy]
   resources :start_time_plans, only: %i[new create edit update]
-  resources :morning_activity_logs, only: %i[index create] 
+  resources :morning_activity_logs, only: %i[index create]
 end

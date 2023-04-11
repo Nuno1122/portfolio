@@ -23,6 +23,6 @@ FactoryBot.define do
   factory :morning_activity_log do
     user { nil }
     start_time_plan { nil }
-    started_time { "2023-04-10 12:42:18" }
+    started_time { '2023-04-10 12:42:18' }
   end
 end

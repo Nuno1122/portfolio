@@ -6,8 +6,8 @@
 #  started_time       :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  start_time_plan_id :uuid             not null
-#  user_id            :uuid             not null
+#  start_time_plan_id :bigint           not null
+#  user_id            :bigint           not null
 #
 # Indexes
 #
@@ -23,6 +23,6 @@ FactoryBot.define do
   factory :morning_activity_log do
     user { nil }
     start_time_plan { nil }
-    started_time { "2023-04-10 12:42:18" }
+    started_time { '2023-04-10 12:42:18' }
   end
 end

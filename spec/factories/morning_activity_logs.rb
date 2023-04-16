@@ -7,7 +7,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  start_time_plan_id :bigint           not null
-#  user_id            :bigint           not null
+#  user_id            :uuid             not null
 #
 # Indexes
 #

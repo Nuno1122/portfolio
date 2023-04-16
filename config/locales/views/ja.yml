@@ -52,3 +52,9 @@ ja:
     update: 
       success: 目標朝活開始時刻を更新しました
       fail: 目標朝活開始時刻更新に失敗しました
+  morning_activity_logs:
+    create:
+      success: 朝活を開始しました
+      fail: 朝活を開始できませんでした
+      is_morning_activity_not_allowed:
+        fail: 早朝3:00までは打刻できません

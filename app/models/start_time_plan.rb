@@ -6,7 +6,7 @@
 #  start_time :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  user_id    :uuid             not null
 #
 # Indexes
 #
@@ -27,7 +27,7 @@ class StartTimePlan < ApplicationRecord
     return if start_time.blank?
 
     allowed_start_time = 4.hours
-    allowed_end_time = 10.hours
+    allowed_end_time = 20.hours
 
     return if start_time.seconds_since_midnight.between?(allowed_start_time, allowed_end_time)
 

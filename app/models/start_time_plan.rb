@@ -21,16 +21,20 @@ class StartTimePlan < ApplicationRecord
   validate :start_time_within_allowed_range
   validates :start_time, presence: true
 
+  ALLOWED_START_HOUR = 4
+  ALLOWED_END_HOUR = 20
+
   private
 
   def start_time_within_allowed_range
     return if start_time.blank?
 
-    allowed_start_time = 4.hours
-    allowed_end_time = 20.hours
+    allowed_start_time = ALLOWED_START_HOUR.hours
+    allowed_end_time = ALLOWED_END_HOUR.hours
 
     return if start_time.seconds_since_midnight.between?(allowed_start_time, allowed_end_time)
 
-      errors.add(:start_time, :not_within_allowed_range)
+    errors.add(:start_time, :not_within_allowed_range)
   end
 end
+

@@ -1,0 +1,7 @@
+<!-- モーダル -->
+<div id="modal" data-achieved-count="<%= @achieved_count %>" data-previous-achieved-count="<%= @previous_achieved_count %>" class="fixed inset-0 flex items-center justify-center z-50 <%= display_modal ? '' : 'hidden' %>">
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <h3 id="modal-content" class="font-bold text-lg"></h3>
+    <button id="close-modal" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">閉じる</button>
+  </div>
+</div>

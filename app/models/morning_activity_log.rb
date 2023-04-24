@@ -30,6 +30,14 @@ class MorningActivityLog < ApplicationRecord
   ALLOWED_START_SEC = 0
   ALLOWED_END_OFFSET = 59.seconds
 
+  # 朝活を許可する時間帯かどうかを判断するメソッド
+  def self.is_morning_activity_not_allowed?(user)
+    return true if Time.current.hour < ALLOWED_START_HOUR
+    last_log = user.morning_activity_logs.order(started_time: :desc).first
+    return false if last_log.nil?
+    Time.current.to_date == last_log.started_time.to_date
+  end
+
   # 達成したかどうかを判断するメソッド
   def achieved?
     # started_time または start_time_plan が空の場合、達成していないと判断

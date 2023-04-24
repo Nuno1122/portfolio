@@ -5,7 +5,7 @@ class MorningActivityLogsController < ApplicationController
   def index
     @morning_activity_logs = current_user.morning_activity_logs.includes(:start_time_plan)
     @achieved_count = @morning_activity_logs.select(&:achieved?).count
-    @morning_activity_not_allowed = is_morning_activity_not_allowed?
+    @morning_activity_not_allowed = MorningActivityLog.is_morning_activity_not_allowed?(current_user)
   end
 
   def create
@@ -27,16 +27,5 @@ class MorningActivityLogsController < ApplicationController
     redirect_to morning_activity_logs_path
   end
 
-  private
-
-  def is_morning_activity_not_allowed?
-     # 現在の時間が03:00:00よりも前であれば、朝活は許可されていないため、trueを返す
-    return true if Time.current.hour < DISALLOWED_HOUR
-     # 最後に記録された朝活ログを取得する（降順でソートし、最初の要素を取得）
-    last_log = current_user.morning_activity_logs.order(started_time: :desc).first
-    return false if last_log.nil?
-     # 現在の日付と最後に記録された朝活ログの日付が同じであれば、朝活は許可されていないため、trueを返す
-     # それ以外の場合（つまり、最後に記録された朝活ログが前の日である場合）は、朝活が許可されているため、falseを返す
-    Time.current.to_date == last_log.started_time.to_date
-  end
+  
 end

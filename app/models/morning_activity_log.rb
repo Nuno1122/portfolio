@@ -38,6 +38,12 @@ class MorningActivityLog < ApplicationRecord
     Time.current.to_date == last_log.started_time.to_date
   end
 
+  # 今月の達成状況を取得するメソッド
+def self.current_monthly_achievement(user)
+  user.monthly_achievements.find_or_initialize_by(month: Time.current.month, year: Time.current.year)
+end
+
+
   # 達成したかどうかを判断するメソッド
   def achieved?
     # started_time または start_time_plan が空の場合、達成していないと判断

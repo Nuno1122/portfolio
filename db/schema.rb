@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_10_034218) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_24_021728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "monthly_achievements", force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.integer "year"
+    t.integer "month"
+    t.integer "achieved_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_monthly_achievements_on_user_id"
+  end
 
   create_table "morning_activity_logs", force: :cascade do |t|
     t.uuid "user_id", null: false
@@ -50,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_10_034218) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "monthly_achievements", "users"
   add_foreign_key "morning_activity_logs", "start_time_plans", on_delete: :cascade
   add_foreign_key "morning_activity_logs", "users"
   add_foreign_key "posts", "users"

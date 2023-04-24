@@ -1,6 +1,6 @@
 class MorningActivityLogsController < ApplicationController
   before_action :require_login
-  DISALLOWED_HOUR = 3
+  
 
   def index
     @morning_activity_logs = current_user.morning_activity_logs.includes(:start_time_plan)
@@ -10,7 +10,7 @@ class MorningActivityLogsController < ApplicationController
 
   def create
     #フロントエンドの制御が機能しなかった場合に問題が発生する可能性があるため設置
-    if is_morning_activity_not_allowed?
+    if MorningActivityLog.is_morning_activity_not_allowed?(current_user)
       flash[:error] = t('.is_morning_activity_not_allowed.fail')
       redirect_to morning_activity_logs_path
       return

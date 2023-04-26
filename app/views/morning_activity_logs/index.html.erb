@@ -30,6 +30,8 @@
                 <span class="text-center text-sm font-semibold text-gray-500 md:text-base">早朝3:00までは打刻できません</span>
               </div>
             <% end %>
+            <% display_modal = @achieved_count.to_i > @previous_achieved_count.to_i %>
+            <%= render 'shared/modal', display_modal: display_modal %>
           </div>
         </div>
       </div>

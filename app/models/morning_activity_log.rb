@@ -30,6 +30,21 @@ class MorningActivityLog < ApplicationRecord
   ALLOWED_START_SEC = 0
   ALLOWED_END_OFFSET = 59.seconds
 
+  # 以下は、達成回数に関する定数を設定しています。
+  DEFAULT_ACHIEVED_COUNT = 0
+  DECREMENT_COUNT = 1
+
+  # ユーザーの月間達成回数を増やすメソッドです。
+  def self.increment_achieved_count(user)
+    current_month = Time.current.month # 現在の月を取得
+    # 現在の月に対応する月間達成情報を取得し、なければ作成します。
+    current_monthly_achievement = user.monthly_achievements.find_or_create_by(month: current_month) do |achievement|
+      achievement.year = Time.current.year
+      achievement.achieved_count = DEFAULT_ACHIEVED_COUNT
+    end
+    current_monthly_achievement.increment!(:achieved_count) # 達成回数を1増やします。
+  end
+
   # 朝活を許可する時間帯かどうかを判断するメソッド
   def self.is_morning_activity_not_allowed?(user)
     return true if Time.current.hour < ALLOWED_START_HOUR
@@ -44,21 +59,46 @@ def self.current_monthly_achievement(user)
 end
 
 
-  # 達成したかどうかを判断するメソッド
+  # 朝活が達成されたかどうかを判断するメソッドです。
   def achieved?
-    # started_time または start_time_plan が空の場合、達成していないと判断
+    # started_time または start_time_plan が空の場合、達成していないと判断。
     return false if started_time.blank? || start_time_plan.blank?
 
-    # 現在の日時を取得
-    current_time = Time.current
-    # started_time の日付と時刻を現在の日付と時刻に調整
-    adjusted_started_time = started_time.change(year: current_time.year, month: current_time.month, day: current_time.day, hour: current_time.hour, min: current_time.min, sec: current_time.sec)
-    # 許可された開始時刻を設定
-    allowed_start_time = start_time_plan.start_time.change(day: current_time.day, hour: ALLOWED_START_HOUR, min: ALLOWED_START_MIN, sec: ALLOWED_START_SEC)
-    # 許可された終了時刻を設定
-    allowed_end_time = start_time_plan.start_time.change(day: current_time.day) + ALLOWED_END_OFFSET
+    # 許可された開始時刻と終了時刻を取得します。
+    allowed_start_time = start_time_plan.start_time
+    allowed_end_time = start_time_plan.start_time + ALLOWED_END_OFFSET
 
-    # adjusted_started_time が allowed_start_time と allowed_end_time の間にある場合、達成と判断
-    adjusted_started_time.between?(allowed_start_time, allowed_end_time)
+    # 今日の日付を取得します。
+    today = Time.zone.now.to_date
+
+    # 許可された開始時刻と終了時刻を今日の日付に設定します。
+    allowed_start_time = start_time_plan.start_time.change(day: today.day, hour: ALLOWED_START_HOUR, min: ALLOWED_START_MIN, sec: ALLOWED_START_SEC)
+    allowed_end_time = allowed_end_time.change(year: today.year, month: today.month, day: today.day)
+
+    # started_time が allowed_start_time と allowed_end_time の間にある場合、達成と判断。
+    started_time.between?(allowed_start_time, allowed_end_time)
   end
+
+ # 朝活ログを作成し、達成状況をチェックするメソッドです。
+ def self.create_log_and_check_achievement(user, start_time_plan_id)
+  # 朝活ログの新しいインスタンスを作成し、属性を設定します。
+  morning_activity_log = user.morning_activity_logs.new(start_time_plan_id: start_time_plan_id, started_time: Time.current)
+  morning_activity_log.start_time_plan = user.start_time_plan
+
+    # 朝活ログを保存します。
+    if morning_activity_log.save
+      if morning_activity_log.achieved? # 達成された場合
+        current_monthly_achievement(user).increment_achieved_count
+        achieved_count = current_monthly_achievement(user).achieved_count
+        redirect_params = {achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: achieved_count}
+      else
+        redirect_params = {achieved: morning_activity_log.achieved?}
+      end
+      return [true, redirect_params] # 成功とリダイレクトパラメータを返します。
+    else
+      return [false, nil] # 失敗とnilを返します。
+    end
+  end
+
+  
 end

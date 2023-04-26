@@ -16,6 +16,8 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  DEFAULT_ACHIEVED_COUNT = 0
+  
   has_many :posts, dependent: :destroy
   has_one :start_time_plan, dependent: :destroy
   has_many :morning_activity_logs, dependent: :destroy
@@ -31,4 +33,16 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+
+  # ユーザーの前月の達成数を返すメソッド / もし前月の達成数が存在しない場合、0を返す
+  def previous_achieved_count
+    current_monthly_achievement.try(:achieved_count) || DEFAULT_ACHIEVED_COUNT
+  end
+
+  # ユーザーの現在の月の達成数を返すメソッド / もし現在の月の達成数が存在しない場合、0を返す
+  def current_achieved_count
+    current_monthly_achievement.try(:achieved_count) || DEFAULT_ACHIEVED_COUNT
+  end
+
+
 end

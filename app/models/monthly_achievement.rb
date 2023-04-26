@@ -21,6 +21,7 @@
 class MonthlyAchievement < ApplicationRecord
   belongs_to :user
   INCREMENT_VALUE = 1
+  
 
 # achieved_count に nil が入らないように設定。値が無い場合、to_i メソッドで 0 を返す。加算時には +1 される。
 def increment_achieved_count

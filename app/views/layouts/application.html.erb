@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Portfolio</title>
+<head>
+    <title>RailsPractice</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,8 +9,10 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <link rel="stylesheet" href="./css/tailwind.dist.css?v=1.0">
-  </head>
+    <%= javascript_include_tag 'morning_activity_logs', 'data-turbolinks-track': 'reload' %>
+
+
+</head>
 
   <body>
     <%= render logged_in? ? 'shared/header' : 'shared/before_login_header' %>

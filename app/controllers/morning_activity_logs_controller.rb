@@ -1,42 +1,29 @@
 class MorningActivityLogsController < ApplicationController
   before_action :require_login
-  DISALLOWED_HOUR = 3
+  DEFAULT_ACHIEVED_COUNT = 0
+  
 
   def index
     @morning_activity_logs = current_user.morning_activity_logs.includes(:start_time_plan)
-    @achieved_count = @morning_activity_logs.select(&:achieved?).count
-    @morning_activity_not_allowed = is_morning_activity_not_allowed?
+    @morning_activity_not_allowed = MorningActivityLog.is_morning_activity_not_allowed?(current_user)
+    @previous_achieved_count = [(params[:previous_achieved_count] || MorningActivityLog.current_monthly_achievement(current_user).achieved_count || DEFAULT_ACHIEVED_COUNT).to_i, DEFAULT_ACHIEVED_COUNT].max
+    @achieved_count = [(params[:achieved_count] || MorningActivityLog.current_monthly_achievement(current_user).achieved_count || DEFAULT_ACHIEVED_COUNT).to_i, DEFAULT_ACHIEVED_COUNT].max
   end
-
+  
   def create
-    #フロントエンドの制御が機能しなかった場合に問題が発生する可能性があるため設置
-    if is_morning_activity_not_allowed?
+    if MorningActivityLog.is_morning_activity_not_allowed?(current_user)
       flash[:error] = t('.is_morning_activity_not_allowed.fail')
       redirect_to morning_activity_logs_path
       return
     end
-
-    @morning_activity_log = current_user.morning_activity_logs.new(started_time: Time.current)
-    @morning_activity_log.start_time_plan = current_user.start_time_plan
-
-    if @morning_activity_log.save
+  
+    success, redirect_params = MorningActivityLog.create_log_and_check_achievement(current_user, params[:start_time_plan_id])
+    if success
       flash[:success] = t('.success')
+      redirect_to morning_activity_logs_path(redirect_params)
     else
       flash[:error] = t('.fail')
+      redirect_to morning_activity_logs_path
     end
-    redirect_to morning_activity_logs_path
-  end
-
-  private
-
-  def is_morning_activity_not_allowed?
-     # 現在の時間が03:00:00よりも前であれば、朝活は許可されていないため、trueを返す
-    return true if Time.current.hour < DISALLOWED_HOUR
-     # 最後に記録された朝活ログを取得する（降順でソートし、最初の要素を取得）
-    last_log = current_user.morning_activity_logs.order(started_time: :desc).first
-    return false if last_log.nil?
-     # 現在の日付と最後に記録された朝活ログの日付が同じであれば、朝活は許可されていないため、trueを返す
-     # それ以外の場合（つまり、最後に記録された朝活ログが前の日である場合）は、朝活が許可されているため、falseを返す
-    Time.current.to_date == last_log.started_time.to_date
   end
 end

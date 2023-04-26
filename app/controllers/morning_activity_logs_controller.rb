@@ -7,7 +7,7 @@ class MorningActivityLogsController < ApplicationController
     @morning_activity_logs = current_user.morning_activity_logs.includes(:start_time_plan)
     @morning_activity_not_allowed = MorningActivityLog.is_morning_activity_not_allowed?(current_user)
     @previous_achieved_count = [(params[:previous_achieved_count] || MorningActivityLog.current_monthly_achievement(current_user).achieved_count || DEFAULT_ACHIEVED_COUNT).to_i, DEFAULT_ACHIEVED_COUNT].max
-    @achieved_count = [(params[:achieved_count] || MorningActivityLog.current_monthly_achievement(current_user).achieved_count || DEFAULT_ACHIEVED_COUNT).to_i, DEFAULT_ACHIEVED_COUNT].max
+    @achieved_count = [(params[:achieved_count] || MonthlyAchievement.achieved_count_or_default(current_user.id, Time.current.year, Time.current.month)).to_i, DEFAULT_ACHIEVED_COUNT].max
   end
   
   def create

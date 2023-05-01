@@ -90,4 +90,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # プロダクション環境用のTwitterコールバックURLを設定する
+  config.x.twitter_callback_url = ENV['TWITTER_CALLBACK_URL_PROD']
+
 end

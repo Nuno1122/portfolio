@@ -20,7 +20,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   DEFAULT_ACHIEVED_COUNT = 0
-  
+
   has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
@@ -49,6 +49,4 @@ class User < ApplicationRecord
   def current_achieved_count
     current_monthly_achievement.try(:achieved_count) || DEFAULT_ACHIEVED_COUNT
   end
-
-
 end

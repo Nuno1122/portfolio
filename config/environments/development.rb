@@ -67,8 +67,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  
-  # 環境変数からTwitter APIのコールバックURLを読み込み、設定する
-  config.x.twitter_callback_url = ENV['TWITTER_CALLBACK_URL']
 
+  # 環境変数からTwitter APIのコールバックURLを読み込み、設定する
+  config.x.twitter_callback_url = ENV.fetch('TWITTER_CALLBACK_URL', nil)
 end

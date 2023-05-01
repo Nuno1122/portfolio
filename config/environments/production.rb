@@ -92,6 +92,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # プロダクション環境用のTwitterコールバックURLを設定する
-  config.x.twitter_callback_url = ENV['TWITTER_CALLBACK_URL_PROD']
-
+  config.x.twitter_callback_url = ENV.fetch('TWITTER_CALLBACK_URL_PROD', nil)
 end

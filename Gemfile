@@ -96,7 +96,5 @@ end
 
 gem 'dockerfile-rails', '>= 1.2', group: :development
 
-
-
 # Gemfile
-gem 'timecop', group: [:development, :test]
+gem 'timecop', group: %i[development test]

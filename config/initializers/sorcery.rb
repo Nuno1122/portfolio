@@ -117,7 +117,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.twitter.key = ENV.fetch('TWITTER_API_KEY', nil)
   config.twitter.secret = ENV.fetch('TWITTER_API_SECRET', nil)
-  config.twitter.callback_url = 'http://127.0.0.1:3000/oauth/callback?provider=twitter'
+  config.twitter.callback_url = ENV.fetch('TWITTER_CALLBACK_URL_PROD', 'http://127.0.0.1:3000/oauth/callback?provider=twitter')
 
   config.twitter.user_info_path = '/1.1/account/verify_credentials.json?include_email=true'
   config.twitter.user_info_mapping = {

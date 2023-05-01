@@ -2,11 +2,19 @@
     <div class="lg:flex items-center justify-center w-full">
         <div tabindex="0" aria-label="card 1" class="focus:outline-none lg:w-4/12 lg:mr-7 lg:mb-0 mb-7 bg-white dark:bg-gray-800  p-6 shadow rounded">
             <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6">
-                <div class="w-12 h-12 bg-gray-300 dark:bg-gray-900  rounded-full flex flex-shrink-0"></div>
+                 <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
+                        <%= image_tag (post.user.image_url if post.user) || "default-profile-image.png", size: '100%', class: 'rounded-full' %>
+                    </div>
                     <div class="flex items-start justify-between w-full">
                         <div class="pl-3 w-full">
                             <p tabindex="0" class="focus:outline-none text-xl font-medium leading-5 text-gray-800 dark:text-white "><%= post.user.name %></p>
-                            <p tabindex="0" class="focus:outline-none text-sm leading-normal pt-2 text-gray-500 dark:text-gray-200  dark:text-gray-200 ">目標開始時間 7:00</p>
+                            <p tabindex="0" class="focus:outline-none text-sm leading-normal pt-2 text-gray-500 dark:text-gray-200  dark:text-gray-200 ">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                            <% morning_activity_log = current_user.morning_activity_logs.joins(:start_time_plan).where('DATE(start_time_plans.created_at) = ?', Date.today).first %>
+                                <% if morning_activity_log %>
+                                    本日の朝活開始時刻: <%= morning_activity_log.started_time.strftime('%Y/%m/%d %H:%M') %>
+                                <% else %>
+                                    本日はまだ朝活を開始していません。
+                                <% end %>
                         </div>
                         <% if current_user.own?(post) %>
                             <div class="card-actions mt-2 justify-around">

@@ -10,15 +10,18 @@
   
       <!-- nav - start -->
       <p><%= current_user.name %>さん</p>
+      <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
+  <%= image_tag current_user.image_url || "default-profile-image.png", size: '100%', class: 'rounded-full' %>
+</div>
+
       <!-- nav - end -->
   
       <!-- buttons - start -->
       
-              <%= link_to "朝活開始メッセージ", "posts/new", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+      <%= link_to "朝活開始メッセージ", new_post_path, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
             
-            
-            
-              <%= link_to "本日の朝活ユーザー一覧", "posts", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+      <%= link_to "本日の朝活ユーザー一覧", posts_path, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+
           
               <%= link_to "ランキング", "#", class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
             

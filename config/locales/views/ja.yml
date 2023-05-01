@@ -58,3 +58,9 @@ ja:
       fail: 朝活を開始できませんでした
       is_morning_activity_not_allowed:
         fail: 早朝3:00までは打刻できません
+  oauths:
+    callback:
+      success: Twitterアカウントでのログインに成功しました
+      fail: Twitterアカウントでログインに失敗しました
+      denied:
+        success: Twitterアカウントでのアカウント作成に成功しました

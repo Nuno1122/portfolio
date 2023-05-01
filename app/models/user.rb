@@ -4,11 +4,14 @@
 #
 #  id               :uuid             not null, primary key
 #  crypted_password :string
-#  email            :string           not null
+#  email            :string
+#  image_url        :string
+#  introduction     :string
 #  name             :string           not null
 #  salt             :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  twitter_id       :string
 #
 # Indexes
 #
@@ -18,6 +21,9 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   DEFAULT_ACHIEVED_COUNT = 0
   
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
+
   has_many :posts, dependent: :destroy
   has_one :start_time_plan, dependent: :destroy
   has_many :morning_activity_logs, dependent: :destroy

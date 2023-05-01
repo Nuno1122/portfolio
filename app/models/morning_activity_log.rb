@@ -24,7 +24,7 @@ class MorningActivityLog < ApplicationRecord
   belongs_to :user
   belongs_to :start_time_plan
   has_many :monthly_achievements # 1つのログは複数の月間達成状況を持ちます。
-  
+
   # 定数の設定
   ALLOWED_START_HOUR = 3
   ALLOWED_START_MIN = 0
@@ -38,11 +38,10 @@ class MorningActivityLog < ApplicationRecord
   # 新しい月の初期化が必要かどうかを確認し、必要であれば実行するためのコールバックメソッドを設定しています。
   after_create :initialize_new_month_if_needed
 
-
-    # 今月の達成状況を取得するメソッド。(クラスメソッド)
-def self.current_monthly_achievement(user)
-  user.monthly_achievements.find_or_initialize_by(month: Time.current.month, year: Time.current.year)
-end
+  # 今月の達成状況を取得するメソッド。(クラスメソッド)
+  def self.current_monthly_achievement(user)
+    user.monthly_achievements.find_or_initialize_by(month: Time.current.month, year: Time.current.year)
+  end
 
   # ユーザーの月間達成回数を増やすメソッドです。
   def self.increment_achieved_count(user)
@@ -58,33 +57,33 @@ end
   # 朝活を許可する時間帯かどうかを判断するメソッド
   def self.is_morning_activity_not_allowed?(user)
     return true if Time.current.hour < ALLOWED_START_HOUR
+
     last_log = user.morning_activity_logs.order(started_time: :desc).first
     return false if last_log.nil?
+
     Time.current.to_date == last_log.started_time.to_date
   end
 
   # 朝活ログを作成し、達成状況をチェックするメソッドです。
   def self.create_log_and_check_achievement(user, start_time_plan_id)
     # 朝活ログの新しいインスタンスを作成し、属性を設定します。
-    morning_activity_log = user.morning_activity_logs.new(start_time_plan_id: start_time_plan_id, started_time: Time.current)
+    morning_activity_log = user.morning_activity_logs.new(start_time_plan_id:, started_time: Time.current)
     morning_activity_log.start_time_plan = user.start_time_plan
 
       # 朝活ログを保存します。
-      if morning_activity_log.save
+      return [false, nil] unless morning_activity_log.save
+
         if morning_activity_log.achieved? # 達成された場合
           current_monthly_achievement(user).increment_achieved_count
           achieved_count = current_monthly_achievement(user).achieved_count
-          redirect_params = {achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: achieved_count}
+          redirect_params = { achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: }
         else
-          redirect_params = {achieved: morning_activity_log.achieved?}
+          redirect_params = { achieved: morning_activity_log.achieved? }
         end
-        return [true, redirect_params] # 成功とリダイレクトパラメータを返します。
-      else
-        return [false, nil] # 失敗とnilを返します。
-      end
-    end
+        [true, redirect_params] # 成功とリダイレクトパラメータを返します。
 
-
+    # 失敗とnilを返します。
+  end
 
   # 朝活が達成されたかどうかを判断するメソッドです。(インスタンスメソッド)
   def achieved?
@@ -110,9 +109,8 @@ end
 
   # 新しい月を初期化する必要がある場合、その処理を行うメソッドです。
   def initialize_new_month_if_needed
-    if user.monthly_achievements.find_by(year: Time.current.year, month: Time.current.month).nil?
+    return unless user.monthly_achievements.find_by(year: Time.current.year, month: Time.current.month).nil?
+
       MonthlyAchievement.initialize_new_month(user)
-    end
   end
-  
 end

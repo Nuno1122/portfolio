@@ -37,4 +37,3 @@ class StartTimePlan < ApplicationRecord
     errors.add(:start_time, :not_within_allowed_range)
   end
 end
-

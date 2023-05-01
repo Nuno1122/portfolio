@@ -1,0 +1,2 @@
+sorcery:
+  callback_url: 'https://morning-activity.fly.dev/oauth/callback?provider=twitter'

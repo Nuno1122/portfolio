@@ -4,7 +4,7 @@
 #
 #  id               :uuid             not null, primary key
 #  crypted_password :string
-#  email            :string           not null
+#  email            :string
 #  image_url        :string
 #  introduction     :string
 #  name             :string           not null

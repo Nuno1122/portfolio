@@ -34,14 +34,13 @@ ja:
     start_now: さっそくつかってみる!
   posts:
     index:
-      title: '開始宣言一覧'
-      no_result: '投稿がありません。'
+      title: 朝活メッセージ一覧
+      no_result: 投稿がありません。
     new:
-      title: 朝活開始メッセージ作成
-      content: メッセージ
+      title: 朝活メッセージ作成
     create:
-      success: 朝活開始宣言が完了しました
-      fail: 朝活開始宣言に失敗しました
+      success: 投稿が完了しました
+      fail: 投稿に失敗しました
       post: 投稿する
   start_time_plans:
     title: 目標朝活開始時刻

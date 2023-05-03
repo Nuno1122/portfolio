@@ -29,13 +29,14 @@
                       <i class="bi bi-twitter"></i> Twitterでログイン
                     <% end %>
                   </div>
-                  <%= link_to (t 'user_sessions.new.guest_user_login'), guest_login_path, data: { turbo_method: :post }, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>
-
+                  <% end %>
+                  <div class="text-center">
+                    <%= button_to (t 'user_sessions.new.guest_user_login'), guest_login_path, method: :post, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base" %>
+                  </div>
                   <div class="flex items-center justify-center bg-gray-100 p-4">
                     <p class="text-center text-sm text-gray-500">アカウントをお持ちでない方<%= link_to (t 'user_sessions.new.register'), new_user_path, class: "text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700" %></p>
                   </div>
-                </div>  
-              <% end %>
+              </div>                
         </div>
       </div>
     </div>

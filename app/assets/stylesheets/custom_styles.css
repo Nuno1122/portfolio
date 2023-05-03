@@ -1,3 +1,6 @@
 .bg-twitter-blue {
     background-color: #1DA1F2;
   }
+  .text-area-custom-height {
+    height: 160px;
+  }

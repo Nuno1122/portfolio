@@ -19,11 +19,19 @@ class MorningActivityLogsController < ApplicationController
 
     success, redirect_params = MorningActivityLog.create_log_and_check_achievement(current_user, params[:start_time_plan_id])
     if success
+      @post = current_user.posts.build(post_params)
+      @post.save
       flash[:success] = t('.success')
       redirect_to morning_activity_logs_path(redirect_params)
     else
       flash[:error] = t('.fail')
       redirect_to morning_activity_logs_path
     end
+  end
+  
+  private
+  
+  def post_params
+    params.require(:post).permit(:content)
   end
 end

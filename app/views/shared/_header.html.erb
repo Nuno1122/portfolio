@@ -10,9 +10,14 @@
   
       <!-- nav - start -->
       <p><%= current_user.name %>さん</p>
-      <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
-  <%= image_tag current_user.image_url || "default-profile-image.png", size: '100%', class: 'rounded-full' %>
-</div>
+      <div class="flex items-center">
+    <% if current_user && current_user.image_url.present? %>
+      <%= image_tag current_user.image_url, size: '4xl', class: 'rounded-full' %>
+    <% else %>
+    <%= icon("solid", "user-circle", size: '4xl') %>
+    <% end %>
+  </div>
+
 
       <!-- nav - end -->
   

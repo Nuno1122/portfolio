@@ -2,9 +2,13 @@
     <div class="lg:flex items-center justify-center w-full">
         <div tabindex="0" aria-label="card 1" class="focus:outline-none lg:w-4/12 lg:mr-7 lg:mb-0 mb-7 bg-white dark:bg-gray-800  p-6 shadow rounded">
             <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6">
-                 <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
-                        <%= image_tag (post.user.image_url if post.user) || "default-profile-image.png", size: '100%', class: 'rounded-full' %>
-                    </div>
+            <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
+            <% if post.user && post.user.image_url.present? %>
+              <%= image_tag post.user.image_url, class: 'rounded-full' %>
+            <% else %>
+            <%= icon("solid", "user-circle", size: '4xl') %>
+            <% end %>
+          </div>
                     <div class="flex items-start justify-between w-full">
                         <div class="pl-3 w-full">
                             <p tabindex="0" class="focus:outline-none text-xl font-medium leading-5 text-gray-800 dark:text-white "><%= post.user.name %></p>

@@ -1,8 +1,9 @@
-<div class="card-actions justify-end">
-    <div class="badge badge-outline"> <%= icon("solid", "pen") %> </div>
-    <div class="badge badge-outline">
-        <%= button_to post_path(post), method: :delete, data: { confirm: '削除しますか？' }, class: 'badge badge-outline' do %>
-            <%= icon("solid", "trash") %> 
-        <% end %>      
+<div class="badge badge-outline flex justify-end space-x-2">
+    <div class="badge badge-outline text-xl text-black"> <%= icon("solid", "pen") %></div>
+        <div class="badge badge-outline text-xl text-black">
+            <%= button_to post_path(post), method: :delete, data: { confirm: '削除しますか？' }, class: 'badge badge-outline' do %>
+                <%= icon("solid", "trash") %> 
+            <% end %>      
+        </div>
     </div>
 </div>

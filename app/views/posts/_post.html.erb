@@ -39,9 +39,15 @@
                     <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活", title: 'Twitter', target: '_blank' %>
                     <% end %>
                     <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500"><%= l post.created_at, format: :long %></div>
-                    <div tabindex="0" class="focus:outline-none flex">
-                        <div class="py-2 px-4 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#dogecoin</div>
-                        <div class="py-2 px-4 ml-3 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#crypto</div>
+                    <div class="flex items-start justify-between w-full">
+                        <div tabindex="0" class="focus:outline-none flex">
+                            <div class="py-2 px-4 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#dogecoin</div>
+                            <div class="py-2 px-4 ml-3 text-xs leading-3 text-indigo-700 rounded-full bg-indigo-100">#crypto</div>
+                        </div>
+                        <div class="badge badge-outline flex justify-end space-x-2">
+                            <div class="badge badge-outline"> <%= icon("regular", "thumbs-up") %> </div>                        
+                            <div class="badge badge-outline"> <%= icon("regular", "comment") %> </div>
+                        </div>
                     </div>
                 </div>
             </div>

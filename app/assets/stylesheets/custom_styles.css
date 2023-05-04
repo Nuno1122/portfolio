@@ -1,6 +1,32 @@
-.bg-twitter-blue {
-    background-color: #1DA1F2;
-  }
   .text-area-custom-height {
     height: 160px;
+  }
+  .twitter-login-button {
+    background-color: #1DA1F2;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 16px 80px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  
+  .twitter-login-button:hover {
+    background-color: #0c86d1;
+  }
+
+  .twitter-button {
+    background-color: #1DA1F2;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  
+  .twitter-button:hover {
+    background-color: #0c86d1;
   }

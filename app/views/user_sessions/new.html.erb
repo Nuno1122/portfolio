@@ -24,9 +24,9 @@
                   <span class="absolute inset-x-0 h-px bg-gray-300"></span>
                   <span class="relative bg-white px-4 text-sm text-gray-400">または</span>
                   </div>
-                  <div class="block rounded-lg flex items-center justify-center bg-twitter-blue p-4">
-                    <%= link_to auth_at_provider_path(provider: :twitter), class: 'btn w-100 twitter text-white ' do %>
-                      <i class="bi bi-twitter"></i> Twitterでログイン
+                  <div class="block rounded-lg flex items-center justify-center">
+                    <%= link_to auth_at_provider_path(provider: :twitter), class: 'twitter-login-button' do %>
+                    Twitterでログイン
                     <% end %>
                   </div>
                   <% end %>

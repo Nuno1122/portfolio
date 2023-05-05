@@ -1,39 +1,55 @@
-<div aria-label="group of cards" tabindex="0" class="focus:outline-none py-8 w-full">
-    <div class="lg:flex items-center justify-center w-full">
-        <div tabindex="0" aria-label="card 1" class="focus:outline-none lg:w-4/12 lg:mr-7 lg:mb-0 mb-7 bg-white dark:bg-gray-800  p-6 shadow rounded">
-            <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6">
-                <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
-                    <% if post.user && post.user.image_url.present? %>
-                        <%= image_tag post.user.image_url, class: 'rounded-full' %>
-                    <% else %>
-                        <%= icon("solid", "user-circle", size: '4xl') %>
-                    <% end %>
-                </div>
-                <div class="pl-3 w-full">
-                    <p tabindex="0" class="focus:outline-none text-xl font-medium leading-5 text-gray-800 dark:text-white "><%= post.user.name %></p>
-                    <p tabindex="0" class="focus:outline-none text-sm leading-normal pt-2 text-gray-500 dark:text-gray-200  dark:text-gray-200 ">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
-                </div>
-             </div>
-              <div class="text-sm leading-5 py-4 text-gray-600 dark:text-gray-200 overflow-wrap break-words">
-                <%= post.content %>
+<div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5 post-card">
+
+            <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6 p-6"> <!-- ボーダーより上 -->
+             
+              <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
+                <% if post.user && post.user.image_url.present? %>
+                    <%= image_tag post.user.image_url, class: 'rounded-full' %>
+                <% else %>
+                    <%= icon("solid", "user-circle", size: '4xl') %>
+                <% end %>
               </div>
-              <div class="badge badge-outline flex justify-end space-x-2">
+              <div class="pl-3 w-full">
+                <p tabindex="0" class="focus:outline-none font-medium leading-5 text-gray-800 dark:text-white "><%= post.user.name %></p>
+                <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500 dark:text-gray-200  dark:text-gray-200 ">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+              </div>
+
+    
+
+             
+            </div> <!-- ここまで -->
+
+          
+
+
+
+            <!-- ボーダーより下 -->
+
+
+            <div class="text-sm leading-5 py-4 text-gray-600 dark:text-gray-200 break-word p-6 post-content"> <!-- 'post-content' クラスを追加 -->
+                <%= post.content %>
+            </div>
+
+            <div class="badge badge-outline flex justify-end p-3 twitter-link">
                 <% if current_user.own?(post) %>
                     <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
                 <% end %>
-              </div>   
-              <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center">
-                  <%= l post.created_at, format: :long %>                  
-                  <% if current_user.own?(post) %>
-                      <%= render 'crud_menus', post: post %>
-                  <% else %>
-                    <div class="badge badge-outline flex space-x-2">
-                        <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "thumbs-up") %> </div>                        
-                        <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "comment") %> </div>
-                    </div>
-                  <% end %>
-              </div>             
             </div>
-        </div>
-    </div>
-</div>
+
+            <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center p-4">
+              <%= l post.created_at, format: :long %>
+              <% if current_user.own?(post) %>
+              
+                <%= render 'crud_menus', post: post %>
+
+               <% else %>
+                <div class="badge badge-outline flex space-x-2">
+                    <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "thumbs-up") %> </div>                        
+                    <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "comment") %> </div>
+                </div>
+              <% end %>
+            </div>
+</div>  
+   
+
+  <!-- ここまで -->

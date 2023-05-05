@@ -1,32 +1,70 @@
-  .text-area-custom-height {
-    height: 160px;
-  }
-  .twitter-login-button {
-    background-color: #1DA1F2;
-    color: #FFFFFF;
-    border-radius: 8px;
-    padding: 16px 80px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    transition: background-color 0.3s;
-  }
-  
-  .twitter-login-button:hover {
-    background-color: #0c86d1;
-  }
+header, footer {
+  background-color: #bfecff;
+}
 
-  .twitter-button {
-    background-color: #1DA1F2;
-    color: #FFFFFF;
-    border-radius: 8px;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    transition: background-color 0.3s;
-  }
-  
-  .twitter-button:hover {
-    background-color: #0c86d1;
-  }
+/* 背景 */
+body {
+  background-color: #fdebc8;
+}
+
+
+.text-area-custom-height {
+  height: 160px;
+}
+
+.post-card {
+  min-height: 300px;
+  width: 300px; 
+  border-radius: 20px; /* この値は適切な丸みに調整してください。 */
+  background-color: #ffffff;
+}
+
+.post-content {
+  height: 150px;
+  overflow-y: auto;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.twitter-login-button {
+  background-color: #1DA1F2;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 16px 35px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.twitter-login-button:hover {
+  background-color: #0c86d1;
+}
+
+.twitter-link {
+  height: 62px;
+  width: 100%; /* 横幅を100%に設定 */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* 右寄せにする */
+}
+
+.twitter-button {
+  background-color: #1DA1F2;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.twitter-button:hover {
+  background-color: #0c86d1;
+}

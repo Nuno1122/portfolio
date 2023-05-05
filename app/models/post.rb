@@ -18,6 +18,18 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :morning_activity_log, optional: true # optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
-  validates :content, presence: true, length: { maximum: 140 * 2, message: '全角文字数上限は140文字です。' }, length: { maximum: 280, message: '半角文字数上限は280文字です。' }
+  #optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
+  belongs_to :morning_activity_log, optional: true
+  validates :content, presence: true
+  MAX_CONTENT_LENGTH = 270
+  validate :content_length
+
+  private
+
+  def content_length
+    count = content.chars.sum { |c| c.ascii_only? ? 1 : 2 }
+    if count > MAX_CONTENT_LENGTH
+      errors.add(:content, "全角・半角文字数上限は#{MAX_CONTENT_LENGTH}半角文字分です。")
+    end
+  end
 end

@@ -4,7 +4,11 @@ header, footer {
 
 /* 背景 */
 body {
-  background-color: #fdebc8; /* 背景色 */
+  background-image: url('/assets/morning_background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
 
 /* メッセージ入力フォームの幅 */

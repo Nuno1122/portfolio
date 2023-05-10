@@ -98,3 +98,5 @@ gem 'dockerfile-rails', '>= 1.2', group: :development
 
 # Gemfile
 gem 'timecop', group: %i[development test]
+
+gem 'kaminari'

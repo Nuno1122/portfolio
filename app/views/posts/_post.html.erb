@@ -2,7 +2,7 @@
 
             <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6 p-6"> <!-- ボーダーより上 -->
              
-              <div class="w-12 dark:bg-gray-900 rounded-full flex flex-shrink-0">
+              <div class="flex flex-shrink-0">
                 <% if post.user && post.user.image_url.present? %>
                     <%= image_tag post.user.image_url, class: 'rounded-full' %>
                 <% else %>
@@ -10,14 +10,25 @@
                 <% end %>
               </div>
               <div class="pl-3 w-full">
-                <p tabindex="0" class="focus:outline-none font-medium leading-5 text-gray-800 dark:text-white "><%= post.user.name %></p>
-                <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500 dark:text-gray-200  dark:text-gray-200 ">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                <p tabindex="0" class="focus:outline-none font-medium "><%= post.user.name %></p>
+                <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                
+                <% morning_activity_log = post.user.morning_activity_log_on(post.created_at.to_date) %>
+                <% if morning_activity_log.present? %>
+                  <% start_time = morning_activity_log.started_time %>
+                  <% plan_time = post.user.start_time_plan.start_time %>
+                  <% text_color = start_time.strftime("%H:%M") <= plan_time.strftime("%H:%M") ? 'text-green-500' : 'text-red-500' %>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>">投稿日の朝活開始時刻:</p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>"><%= start_time.strftime('%Y/%m/%d %H:%M') %></p>
+                <% else %>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-black-500">投稿日の朝活開始時刻はありません。</p>
+                <% end %>
               </div>
 
-    
+            
 
-             
             </div> <!-- ここまで -->
+
 
           
 
@@ -30,7 +41,7 @@
                 <%= post.content %>
             </div>
 
-            <div class="badge badge-outline flex justify-end p-3 twitter-link">
+            <div class="badge badge-outline flex justify-end pr-4 p-0 twitter-link">
                 <% if current_user.own?(post) %>
                     <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
                 <% end %>

@@ -1,26 +1,27 @@
 header, footer {
-  background-color: #bfecff;
+  background-color: #bfecff; /* 背景色 */
 }
 
 /* 背景 */
 body {
-  background-color: #fdebc8;
+  background-color: #fdebc8; /* 背景色 */
 }
 
-
+/* メッセージ入力フォームの幅 */
 .text-area-custom-height {
-  height: 160px;
+  height: 160px; /* 高さ */
 }
 
+/* 投稿物 */
 .post-card {
-  min-height: 300px;
-  width: 300px; 
-  border-radius: 20px; /* この値は適切な丸みに調整してください。 */
-  background-color: #ffffff;
+  width: 300px; /* 横幅 */
+  border-radius: 20px; /* 角丸 */
+  background-color: #ffffff; /* 背景色 */
 }
 
+/* 投稿物の枠表示幅 */
 .post-content {
-  height: 150px;
+  height: 120px;
   overflow-y: auto;
 }
 

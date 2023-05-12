@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RailsPractice</title>
+    <title>おはログ！！</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,10 +23,18 @@
     </script>
 </head>
 
-  <body>
+<body class="flex flex-col min-h-screen">
+<header>
     <%= render logged_in? ? 'shared/header' : 'shared/before_login_header' %>
+</header>
     <%= render 'shared/flash_message' %>
+    
+    <main class="flex-grow">
     <%= yield %>
+    </main>
+
+    <footer>
     <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>

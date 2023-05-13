@@ -1,0 +1,17 @@
+<div class="btn-group flex justify-between my-5">
+  <%= paginator.render do -%>
+    <nav class="pagination" role="navigation" aria-label="pager">
+      <%= first_page_tag unless current_page.first? %> <!-- "最初へ"のリンク -->
+      <%= prev_page_tag unless current_page.first? %> <!-- "前へ"のリンク -->
+      <% each_page do |page| -%>
+        <% if page.display_tag? -%>
+          <%= page_tag page %> <!-- 各ページへのリンク -->
+        <% elsif !page.was_truncated? -%>
+          <%= gap_tag %> <!-- ページ番号の省略部分 (...) -->
+        <% end -%>
+      <% end -%>
+      <%= next_page_tag unless current_page.last? %> <!-- "次へ"のリンク -->
+      <%= last_page_tag unless current_page.last? %> <!-- "最後へ"のリンク -->
+    </nav>
+  <% end -%>
+</div>

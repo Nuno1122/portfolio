@@ -5,15 +5,16 @@ header, footer {
 
 /* 背景 */
 body {
-  background-image: url('/assets/morning_background.jpeg');
+  background-image: url('morning_background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 
 main {
   flex-grow: 1;

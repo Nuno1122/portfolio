@@ -53,6 +53,4 @@ class User < ApplicationRecord
   def morning_activity_log_on(date)
     morning_activity_logs.find { |log| log.created_at.to_date == date }
   end
-
 end
-

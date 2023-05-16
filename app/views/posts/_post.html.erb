@@ -43,7 +43,7 @@
 
             <div class="badge badge-outline flex justify-end pr-4 p-0 twitter-link">
                 <% if current_user.own?(post) %>
-                    <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
+                    <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活&hashtags=おはログ", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
                 <% end %>
             </div>
 

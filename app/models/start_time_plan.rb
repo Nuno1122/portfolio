@@ -22,7 +22,7 @@ class StartTimePlan < ApplicationRecord
   validates :start_time, presence: true
 
   ALLOWED_START_HOUR = 4
-  ALLOWED_END_HOUR = 20
+  ALLOWED_END_HOUR = 10
 
   private
 

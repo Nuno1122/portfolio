@@ -21,7 +21,7 @@ class Post < ApplicationRecord
   #optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
   belongs_to :morning_activity_log, optional: true
   validates :content, presence: true
-  MAX_CONTENT_LENGTH = 270
+  MAX_CONTENT_LENGTH = 260
   validate :content_length
 
   private

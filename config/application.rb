@@ -52,7 +52,6 @@ module Portfolio
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
-    config.font_awesome_kit_url = ENV['FONT_AWESOME_KIT_URL']
-
+    config.font_awesome_kit_url = ENV.fetch('FONT_AWESOME_KIT_URL', nil)
   end
 end

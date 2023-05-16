@@ -28,9 +28,9 @@ class MorningActivityLogsController < ApplicationController
       redirect_to morning_activity_logs_path
     end
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(:content)
   end

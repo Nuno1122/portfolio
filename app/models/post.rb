@@ -18,7 +18,7 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
-  #optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
+  # optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
   belongs_to :morning_activity_log, optional: true
   validates :content, presence: true
   MAX_CONTENT_LENGTH = 260
@@ -28,8 +28,8 @@ class Post < ApplicationRecord
 
   def content_length
     count = content.chars.sum { |c| c.ascii_only? ? 1 : 2 }
-    if count > MAX_CONTENT_LENGTH
+    return unless count > MAX_CONTENT_LENGTH
+
       errors.add(:content, "全角・半角文字数上限は#{MAX_CONTENT_LENGTH}半角文字分です。")
-    end
   end
 end

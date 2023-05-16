@@ -8,7 +8,6 @@ https://drive.google.com/file/d/1SIZjWR66RoF40pZJffNIQgrD504SYaPZ/view?usp=shari
 https://www.figma.com/file/AZOsDuJ7keBIihRfMxLWE0/%E6%9C%9D%E6%B4%BB%E3%82%A2%E3%83%97%E3%83%AA%EF%BC%88%E4%BB%AE%EF%BC%89?node-id=0%3A1&t=DHOp2uIPpBFy4pT9-1
 
 ## ■ サービス概要 
- 「目覚めて活動開始!朝活開始時刻記録ツール」
 このアプリでは、目標開始時刻の設定、開始メッセージの作成と投稿、朝活開始の打刻、
 そして目標時間内に活動が開始できたかのカウントといった機能を通じて、朝活の継続をサポートします。
 

@@ -1,6 +1,133 @@
-.bg-twitter-blue {
-    background-color: #1DA1F2;
+header, footer {
+  width: 100%; /* 横幅を100%に設定 */
+  background-color: #bfecff; /* 背景色 */
+}
+
+/* 背景 */
+body {
+  background-image: url('morning_background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+main {
+  flex-grow: 1;
+}
+
+/* メッセージ入力フォームの幅 */
+.text-area-custom-height {
+  height: 160px; /* 高さ */
+
+}
+
+/* 投稿物 */
+.post-card {
+  width: 300px; /* 横幅 */
+  border-radius: 20px; /* 角丸 */
+  background-color: #ffffff; /* 背景色 */
+}
+
+/* 投稿物の枠表示幅 */
+.post-content {
+  height: 120px;
+  overflow-y: auto;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.twitter-login-button {
+  background-color: #1DA1F2;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 16px 35px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.twitter-login-button:hover {
+  background-color: #0c86d1;
+}
+
+.twitter-link {
+  height: 62px;
+  width: 100%; /* 横幅を100%に設定 */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* 右寄せにする */
+}
+
+.twitter-button {
+  background-color: #1DA1F2;
+  color: #FFFFFF;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+.twitter-button:hover {
+  background-color: #0c86d1;
+}
+
+.drawer-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.drawer-toggle {
+  display: none;
+}
+
+.drawer-toggle:checked ~ aside {
+  transform: translateX(0);
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #e0fcff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.hide-desktop {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .hide-desktop {
+    display: inline-block;
   }
-  .text-area-custom-height {
-    height: 160px;
-  }
+}
+
+/* 全体のページネーションをフレックスボックスとして扱い、折り返しを許可します */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* アイテムを中央に寄せます */
+}
+
+/* 各ページネーションアイテムにマージンを追加し、それらが適切にスペースを持つようにします */
+.pagination-item {
+  margin: 0.5em;
+}

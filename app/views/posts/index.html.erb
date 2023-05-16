@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="col-12">
-    <div class="row">
-        <% if @posts.present? %>
-          <%= render @posts %>
-        <% else %>
-          <p><%= t('.no_result') %></p>
-        <% end %>       
-    </div>
-  </div>
+<div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center mx-3">
+  <% if @posts.present? %>
+    <%= render @posts %>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
+</div>
+
+
+
+<div class="flex justify-center my-5">
+  <%= paginate @posts %>
 </div>

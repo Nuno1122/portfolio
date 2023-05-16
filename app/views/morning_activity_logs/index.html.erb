@@ -4,18 +4,30 @@
       <div class="hero-content flex-col">
         <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
           <div class="flex flex-col gap-4 p-4 md:p-8">
-            <div class="flex flex-col items-center">
-              <h1>朝活達成状況</h1>
-              <p>達成回数</p> 
-              <%= @achieved_count %>
-            </div>
+          <div class="flex flex-col items-center  bg-white rounded-lg p-4 shadow-md">
+          <i class="fas fa-trophy text-2xl"></i>
+            <h1 class="text-xl text-center">朝活達成状況</h1>
+            <p class="text-xl text-center">達成回数</p> 
+            <p class="text-xl  text-center"><%= @achieved_count %></p>
+        </div>
+        
             <div class="flex flex-col items-center">
               <% if current_user && current_user.start_time_plan && current_user.start_time_plan.start_time %>
-                <h1>目標朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %></h1>
-                <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) %>
-              <% else %>
+              <div class="bg-white rounded-lg p-4 shadow-md">
+  
+              <h1 class="text-2xl text-center flex items-center justify-center">
+              <i class="fas fa-clock text-2xl mr-2"></i>
+              目標朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %>
+            </h1>
+            
+</div>
+
+                <div class="mt-4">
+                <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) , class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
+                </div>
+                <% else %>
                 <h1>目標朝活開始時刻が設定されていません。</h1>
-                <%= link_to t('start_time_plans.set_target_start_time'), new_start_time_plan_path %>
+                <%= link_to t('start_time_plans.set_target_start_time'), new_start_time_plan_path , class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
               <% end %>
             </div>
             <% if !@morning_activity_not_allowed %>
@@ -27,10 +39,13 @@
                       <%= f.label :content, t('posts.new.title') %>
                     </h1>
                     <div class="sm:col-span-2">
-                      <%= post_fields.text_area :content, class: "w-80 focus:ring text-area-custom-height" %>
+                      <%= post_fields.text_area :content, class: "w-full focus:ring text-area-custom-height" %>
                     </div>
-                  <% end %>
-                  <%= f.submit "朝活開始", class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base' %>
+                    <div class="flex flex-col items-center">
+                    <%= f.submit "朝活開始", class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base' %>
+                    </div>
+                    <% end %>
+                 
                 </div>
               <% end %>
             <% else %>

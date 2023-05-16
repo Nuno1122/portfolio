@@ -49,4 +49,10 @@ class User < ApplicationRecord
   def current_achieved_count
     current_monthly_achievement.try(:achieved_count) || DEFAULT_ACHIEVED_COUNT
   end
+
+  def morning_activity_log_on(date)
+    morning_activity_logs.find { |log| log.created_at.to_date == date }
+  end
+
 end
+

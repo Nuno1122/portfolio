@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RailsPractice</title>
+    <title>おはログ！！</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,10 +23,25 @@
     </script>
 </head>
 
-  <body>
+<body class="flex flex-col min-h-screen">
     <%= render logged_in? ? 'shared/header' : 'shared/before_login_header' %>
     <%= render 'shared/flash_message' %>
+
+    <main class="flex-grow">
+    <label for="my-drawer" class="btn btn-ghost drawer-button text-right hide-desktop">
+  <%= icon("solid", "bars", size: '2xl') %>
+</label>
+
+    <input type="checkbox" id="my-drawer" class="drawer-toggle">
+    <aside>
+      <%=  render logged_in? ? 'layouts/sidebar' : 'layouts/before_sidebar' %>
+    </aside>
     <%= yield %>
+  </main>
+  
+
+    <footer>
     <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>

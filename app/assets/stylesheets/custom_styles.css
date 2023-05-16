@@ -23,6 +23,7 @@ main {
 /* メッセージ入力フォームの幅 */
 .text-area-custom-height {
   height: 160px; /* 高さ */
+
 }
 
 /* 投稿物 */
@@ -81,4 +82,52 @@ main {
 
 .twitter-button:hover {
   background-color: #0c86d1;
+}
+
+.drawer-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.drawer-toggle {
+  display: none;
+}
+
+.drawer-toggle:checked ~ aside {
+  transform: translateX(0);
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #e0fcff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.hide-desktop {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .hide-desktop {
+    display: inline-block;
+  }
+}
+
+/* 全体のページネーションをフレックスボックスとして扱い、折り返しを許可します */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* アイテムを中央に寄せます */
+}
+
+/* 各ページネーションアイテムにマージンを追加し、それらが適切にスペースを持つようにします */
+.pagination-item {
+  margin: 0.5em;
 }

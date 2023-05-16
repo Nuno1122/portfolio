@@ -24,14 +24,21 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
-<header>
     <%= render logged_in? ? 'shared/header' : 'shared/before_login_header' %>
-</header>
     <%= render 'shared/flash_message' %>
-    
+
     <main class="flex-grow">
+    <label for="my-drawer" class="btn btn-ghost drawer-button text-right hide-desktop">
+  <%= icon("solid", "bars", size: '2xl') %>
+</label>
+
+    <input type="checkbox" id="my-drawer" class="drawer-toggle">
+    <aside>
+      <%=  render logged_in? ? 'layouts/sidebar' : 'layouts/before_sidebar' %>
+    </aside>
     <%= yield %>
-    </main>
+  </main>
+  
 
     <footer>
     <%= render 'shared/footer' %>

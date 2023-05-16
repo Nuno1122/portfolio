@@ -20,9 +20,8 @@
                   <div class="flex flex-col items-center">
                     <%= f.button (t 'defaults.login'), class: "block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
                   </div>
-                  <div class="relative flex items-center justify-center">
-                  <span class="absolute inset-x-0 h-px bg-gray-300"></span>
-                  <span class="relative bg-white px-4 text-sm text-gray-400">または</span>
+                  <div class=" flex items-center justify-center">
+                  <span class=" bg-white px-4 text-sm text-gray-400">または</span>
                   </div>
                   <div class="block rounded-lg flex items-center justify-center">
                     <%= link_to auth_at_provider_path(provider: :twitter), class: 'twitter-login-button' do %>

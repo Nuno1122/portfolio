@@ -18,8 +18,9 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
-  # optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
-  belongs_to :morning_activity_log, optional: true
+  belongs_to :morning_activity_log, optional: true # optional: trueを指定することで、PostモデルのレコードがMorningActivityLogモデルのレコードと関連付けられなくても、バリデーションエラーが発生しないようになります。
+  has_many :likes, dependent: :destroy
+
   validates :content, presence: true
   MAX_CONTENT_LENGTH = 260
   validate :content_length

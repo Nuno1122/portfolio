@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   delete 'logout', to: 'user_sessions#destroy'
   resources :users, only: %i[new create destroy]
-  resources :posts, only: %i[new create index destroy]
+  resources :posts, only: %i[new create index destroy] do
+    resource :likes, only: %i[create destroy]
+  end
+  resources :likes, only: :index
   resources :start_time_plans, only: %i[new create edit update]
   resources :morning_activity_logs, only: %i[index create]
 end

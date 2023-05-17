@@ -4,11 +4,10 @@
       <div class="hero-content flex-col">
         <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
           <div class="flex flex-col gap-4 p-4 md:p-8">
-          <div class="flex flex-col items-center  bg-white rounded-lg p-4 shadow-md">
-          <i class="fas fa-trophy text-2xl"></i>
-            <h1 class="text-xl text-center">朝活達成状況</h1>
-            <p class="text-xl text-center">達成回数</p> 
-            <p class="text-xl  text-center"><%= @achieved_count %></p>
+          <div class="flex flex-col items-center  bg-achieved-background-count-color rounded-lg p-4 shadow-md">
+          <i class="fas fa-trophy text-3xl text-yellow-200"></i>
+            <h1 class="text-2xl text-center text-achieved_count-color">朝活達成回数</h1> 
+            <p class="text-3xl  text-center text-achieved_count-color"><%= @achieved_count %></p>
         </div>
         
             <div class="flex flex-col items-center">
@@ -16,14 +15,13 @@
               <div class="bg-white rounded-lg p-4 shadow-md">
   
               <h1 class="text-2xl text-center flex items-center justify-center">
-              <i class="fas fa-clock text-2xl mr-2"></i>
-              目標朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %>
-            </h1>
-            
-</div>
+                <i class="fas fa-clock text-2xl mr-2"></i>
+                朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %>
+              </h1>
+            </div>
 
                 <div class="mt-4">
-                <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) , class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
+                <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) , class: 'btn btn-primary inline-block rounded-lg bg-gray-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
                 </div>
                 <% else %>
                 <h1>目標朝活開始時刻が設定されていません。</h1>

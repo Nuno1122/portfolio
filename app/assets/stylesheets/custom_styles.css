@@ -20,6 +20,15 @@ main {
   flex-grow: 1;
 }
 
+.bg-achieved-background-count-color {
+  background-color: #bfecff;
+}
+
+.text-achieved_count-color {
+  color: #29cd6a;
+  font-weight: bold;
+}
+
 /* メッセージ入力フォームの幅 */
 .text-area-custom-height {
   height: 160px; /* 高さ */

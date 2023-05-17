@@ -11,7 +11,12 @@
               </div>
               <div class="pl-3 w-full">
                 <p tabindex="0" class="focus:outline-none font-medium "><%= post.user.name %></p>
-                <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                <% if post.user.start_time_plan %>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                <% else %>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">朝活開始時刻を設定していません</p>
+                <% end %>
+
                 
                 <% morning_activity_log = post.user.morning_activity_log_on(post.created_at.to_date) %>
                 <% if morning_activity_log.present? %>

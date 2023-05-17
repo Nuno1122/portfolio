@@ -12,9 +12,9 @@
               <div class="pl-3 w-full">
                 <p tabindex="0" class="focus:outline-none font-medium "><%= post.user.name %></p>
                 <% if post.user.start_time_plan %>
-                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標の朝活開始時刻 <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
                 <% else %>
-                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">朝活開始時刻を設定していません</p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標の開始時刻を設定していません</p>
                 <% end %>
 
                 
@@ -23,7 +23,7 @@
                   <% start_time = morning_activity_log.started_time %>
                   <% plan_time = post.user.start_time_plan.start_time %>
                   <% text_color = start_time.strftime("%H:%M") <= plan_time.strftime("%H:%M") ? 'text-green-500' : 'text-red-500' %>
-                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>">投稿日の朝活開始時刻:</p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>">投稿日の朝活開始時刻</p>
                   <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>"><%= start_time.strftime('%Y/%m/%d %H:%M') %></p>
                 <% else %>
                   <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-black-500">投稿日の朝活開始時刻はありません。</p>

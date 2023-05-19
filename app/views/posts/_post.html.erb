@@ -61,16 +61,7 @@
                <% else %>
                 <div class="badge badge-outline flex space-x-2">
 
-                <span class="material-symbols-outlined">
-                <%= button_to post_likes_path(post), method: current_user.like?(post) ? :delete : :post, form: { class: 'inline' } do %>
-                  <div class="badge badge-outline text-xl text-black">
-                    <%= icon(current_user.like?(post) ? "solid" : "regular", "thumbs-up") %>
-                  </div>
-                <% end %>
-                <span class="like-count">
-                  <%= post.likes_count %>
-                </span>
-              </span>
+                <%= render 'likes/like_button', post: post %>
 
                     <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "comment") %> </div>
                 </div>

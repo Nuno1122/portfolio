@@ -27,7 +27,7 @@ class Post < ApplicationRecord
   validate :content_length
 
   def likes_count
-    self.likes.count
+    likes.count
   end
 
   private

@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     render turbo_stream: turbo_stream.replace(
       post,
       partial: 'likes/like_button',
-      locals: { post: post }
+      locals: { post: }
     )
   end
 
@@ -15,7 +15,7 @@ class LikesController < ApplicationController
     render turbo_stream: turbo_stream.replace(
       post,
       partial: 'likes/like_button',
-      locals: { post: post }
+      locals: { post: }
     )
   end
 end

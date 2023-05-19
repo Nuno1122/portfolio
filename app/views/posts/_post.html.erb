@@ -42,30 +42,33 @@
             <!-- ボーダーより下 -->
 
 
-            <div class="text-sm leading-5 py-4 text-black-500  break-word p-6 post-content"> <!-- 'post-content' クラスを追加 -->
+            <div class="text-sm leading-5 py-4 text-gray-600 dark:text-gray-200 break-word p-6 post-content"> <!-- 'post-content' クラスを追加 -->
                 <%= post.content %>
             </div>
 
-            <div class="badge badge-outline flex justify-end pr-4 p-0 twitter-link">
-                <% if current_user.own?(post) %>
-                    <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活&hashtags=おはログ", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
-                <% end %>
+            
+            <% if current_user.own?(post) %>
+              <div class="flex justify-between px-6">
+                <div class="badge badge-outline flex space-x-2 mt-1 px-6">
+                  <%= render 'crud_menus', post: post %>
+                </div>
+                <div class="badge badge-outline flex space-x-2">
+                    <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
+                </div>
             </div>
+           <% end %>
+        
+            
 
             <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center p-4">
               <%= l post.created_at, format: :long %>
-              <% if current_user.own?(post) %>
-              
-                <%= render 'crud_menus', post: post %>
-
-               <% else %>
-                <div class="badge badge-outline flex space-x-2">
+             
+              <div class="badge badge-outline flex space-x-2">
 
                 <%= render 'likes/like_button', post: post %>
-
-                    <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "comment") %> </div>
+            
+                <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "comment") %> </div>
                 </div>
-              <% end %>
             </div>
 </div>  
    

@@ -3,4 +3,4 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
-//= link morning_activity_logs.js
+//= link modal_controller.js

@@ -140,3 +140,22 @@ aside {
 .pagination-item {
   margin: 0.5em;
 }
+
+#modal-backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+  animation-fill-mode: forwards;
+}

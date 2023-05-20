@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_501_052_535) do
+ActiveRecord::Schema[7.0].define(version: 20_230_517_234_943) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_052_535) do
     t.datetime 'updated_at', null: false
     t.index %w[provider uid], name: 'index_authentications_on_provider_and_uid'
     t.index ['user_id'], name: 'index_authentications_on_user_id'
+  end
+
+  create_table 'likes', force: :cascade do |t|
+    t.uuid 'user_id', null: false
+    t.bigint 'post_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['post_id'], name: 'index_likes_on_post_id'
+    t.index %w[user_id post_id], name: 'index_likes_on_user_id_and_post_id', unique: true
+    t.index ['user_id'], name: 'index_likes_on_user_id'
   end
 
   create_table 'monthly_achievements', force: :cascade do |t|
@@ -49,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_052_535) do
     t.text 'content', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.integer 'likes_count', default: 0
     t.index ['user_id'], name: 'index_posts_on_user_id'
   end
 
@@ -74,6 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_501_052_535) do
   end
 
   add_foreign_key 'authentications', 'users'
+  add_foreign_key 'likes', 'posts'
+  add_foreign_key 'likes', 'users'
   add_foreign_key 'monthly_achievements', 'users'
   add_foreign_key 'morning_activity_logs', 'start_time_plans', on_delete: :cascade
   add_foreign_key 'morning_activity_logs', 'users'

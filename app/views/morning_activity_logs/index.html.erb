@@ -16,7 +16,7 @@
   
               <h1 class="text-2xl text-center flex items-center justify-center">
                 <i class="fas fa-clock text-2xl mr-2"></i>
-                朝活開始時刻: <%= current_user.start_time_plan.start_time.strftime("%H:%M") %>
+                目標の朝活開始時刻 <%= current_user.start_time_plan.start_time.strftime("%H:%M") %>
               </h1>
             </div>
 
@@ -24,7 +24,7 @@
                 <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) , class: 'btn btn-primary inline-block rounded-lg bg-gray-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
                 </div>
                 <% else %>
-                <h1>目標朝活開始時刻が設定されていません。</h1>
+                <h1>目標の朝活開始時刻が設定されていません。</h1>
                 <%= link_to t('start_time_plans.set_target_start_time'), new_start_time_plan_path , class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
               <% end %>
             </div>

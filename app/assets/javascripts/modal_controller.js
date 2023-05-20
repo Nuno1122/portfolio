@@ -1,8 +1,12 @@
 const MODAL_DISPLAY_TRUE = 'true';
 const HIDDEN_CLASS = 'hidden';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
   const modal = document.getElementById('modal');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  // If modal does not exist, stop execution.
+  if (!modal || !modalBackdrop) return;
+
   const closeModalButton = document.getElementById('close-modal');
 
   // クエリパラメーターから "achieved" を取得
@@ -19,14 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const randomMessages = generateRandomMessages(currentMonth, achievedCount);
 
   // 朝活達成時の処理
-  if (achieved === MODAL_DISPLAY_TRUE) {
-    displayAchievementMessage(modal, previousAchievedCount, achievedCount, firstTimeMessage, randomMessages);
-  }
+if (achieved === MODAL_DISPLAY_TRUE) {
+  displayAchievementMessage(modal, previousAchievedCount, achievedCount, firstTimeMessage, randomMessages);
+  modalBackdrop.classList.remove(HIDDEN_CLASS);
+  modal.classList.add('fade-in');
+}
 
-  // モーダルを閉じるイベントリスナー
-  closeModalButton.addEventListener('click', () => {
-    closeModalAndUpdateUrl(modal, params);
-  });
+// モーダルを閉じるイベントリスナー
+closeModalButton.addEventListener('click', () => {
+  closeModalAndUpdateUrl(modal, params);
+  modalBackdrop.classList.add(HIDDEN_CLASS);
+  modal.classList.remove('fade-in');
+});
+
 });
 
 

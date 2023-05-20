@@ -1,0 +1,15 @@
+<%= turbo_frame_tag post do %>
+  <% if current_user.like?(post) %>
+    <%= button_to post_likes_path(post), method: :delete do %>
+   
+      <div class="badge badge-outline text-xl text-black"> <%= icon("solid", "thumbs-up") %> <%= post.likes_count %></div>
+   
+    <% end %>
+  <% else %>
+    <%= button_to post_likes_path(post), method: :post do %>
+     <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "thumbs-up") %>
+      <%= post.likes_count %></div>
+    <% end %>
+  <% end %>
+<% end %>
+

@@ -18,11 +18,15 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
-
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments
+  end
+  
   def destroy
     @post.destroy!
-    redirect_to posts_path, success: '投稿を削除しました。'
+    redirect_to posts_path, success: t('.success')
   end
 
   private

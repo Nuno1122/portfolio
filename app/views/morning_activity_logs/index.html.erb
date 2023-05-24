@@ -5,16 +5,16 @@
         <div class="flex w-full flex-col gap-2.5 sm:flex-row sm:justify-center">
           <div class="flex flex-col gap-4 p-4 md:p-8">
           <div class="flex flex-col items-center  bg-achieved-background-count-color rounded-lg p-4 shadow-md">
-          <i class="fas fa-trophy text-3xl text-yellow-200"></i>
-            <h1 class="text-2xl text-center text-achieved_count-color">朝活達成回数</h1> 
-            <p class="text-3xl  text-center text-achieved_count-color"><%= @achieved_count %></p>
+          <i class="fas fa-trophy text-3xl text-achieved_count-color text-yellow-200"></i>
+            <h1 class="text-2xl text-center text-achieved_count-color text-yellow-100">朝活達成回数</h1> 
+            <p class="text-3xl  text-center text-achieved_count-color text-yellow-100"><%= @achieved_count %></p>
         </div>
         
             <div class="flex flex-col items-center">
               <% if current_user && current_user.start_time_plan && current_user.start_time_plan.start_time %>
-              <div class="bg-white rounded-lg p-4 shadow-md">
+              <div class="bg-black rounded-lg p-4 shadow-md">
   
-              <h1 class="text-2xl text-center flex items-center justify-center">
+              <h1 class="text-2xl text-center flex items-center justify-center text-white text-outline">
                 <i class="fas fa-clock text-2xl mr-2"></i>
                 目標の朝活開始時刻 <%= current_user.start_time_plan.start_time.strftime("%H:%M") %>
               </h1>
@@ -24,7 +24,7 @@
                 <%= link_to t('defaults.edit'), edit_start_time_plan_path(current_user.start_time_plan) , class: 'btn btn-primary inline-block rounded-lg bg-gray-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
                 </div>
                 <% else %>
-                <h1>目標の朝活開始時刻が設定されていません。</h1>
+                <h1>目標朝活開始時刻が設定されていません。</h1>
                 <%= link_to t('start_time_plans.set_target_start_time'), new_start_time_plan_path , class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base'%>
               <% end %>
             </div>
@@ -33,14 +33,14 @@
                 <div class="flex flex-col gap-4 p-4 md:p-8">
                   <%= f.hidden_field :started_time %>
                   <%= f.fields_for :post do |post_fields| %>
-                    <h1 class="text-2xl font-bold text-center">
-                      <%= f.label :content, t('posts.new.title') %>
+                    <h1 class="text-2xl font-bold text-center text-indigo-500">
+                      <%= f.label :content, t('posts.new.title'),class: 'text-white text-outline' %>
                     </h1>
-                    <div class="sm:col-span-2">
-                      <%= post_fields.text_area :content, class: "w-full focus:ring text-area-custom-height" %>
+                    <div class="sm:col-span-2 text-center">
+                      <%= post_fields.text_area :content, class:'inline-block rounded-lg bg-white px-10 py-12 text-center text-sm font-semibold text-black outline-none ring-indigo-300 transition duration-100 hover:bg-white focus-visible:ring active:bg-white md:text-base' %>
                     </div>
                     <div class="flex flex-col items-center">
-                    <%= f.submit "朝活開始", class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base' %>
+                    <%= f.submit t('morning_activity_logs.start_morning_activity') , class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base' %>
                     </div>
                     <% end %>
                  
@@ -59,3 +59,4 @@
     </div>
   </div>
 </section>
+

@@ -1,6 +1,6 @@
 <div class="col-span-1 card w-auto bg-base-100 shadow-xl mt-4 mx-1.5 post-card">
 
-            <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6 p-6"> <!-- ボーダーより上 -->
+            <div class="flex items-center border-b border-gray-200 dark:border-gray-700  pb-6 p-6 pl-3 mx-3.5"> <!-- ボーダーより上 -->
              
               <div class="flex flex-shrink-0">
                 <% if post.user && post.user.image_url.present? %>
@@ -12,18 +12,17 @@
               <div class="pl-3 w-full">
                 <p tabindex="0" class="focus:outline-none font-medium "><%= post.user.name %></p>
                 <% if post.user.start_time_plan %>
-                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標の朝活開始時刻 <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標朝活開始時刻: <%= post.user.start_time_plan.start_time.strftime("%H:%M") %></p>
                 <% else %>
-                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">目標の開始時刻を設定していません</p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-gray-500">朝活開始時刻を設定していません</p>
                 <% end %>
 
-                
                 <% morning_activity_log = post.user.morning_activity_log_on(post.created_at.to_date) %>
                 <% if morning_activity_log.present? %>
                   <% start_time = morning_activity_log.started_time %>
                   <% plan_time = post.user.start_time_plan.start_time %>
                   <% text_color = start_time.strftime("%H:%M") <= plan_time.strftime("%H:%M") ? 'text-green-500' : 'text-red-500' %>
-                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>">投稿日の朝活開始時刻</p>
+                  <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>">投稿日の朝活開始時刻:</p>
                   <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 <%= text_color %>"><%= start_time.strftime('%Y/%m/%d %H:%M') %></p>
                 <% else %>
                   <p tabindex="0" class="focus:outline-none text-xs leading-normal pt-2 text-black-500">投稿日の朝活開始時刻はありません。</p>
@@ -34,7 +33,6 @@
 
             </div> <!-- ここまで -->
 
-
           
 
 
@@ -42,34 +40,37 @@
             <!-- ボーダーより下 -->
 
 
-            <div class="text-sm leading-5 py-4 text-gray-600  break-word p-6 post-content"> <!-- 'post-content' クラスを追加 -->
+            <div class="text-sm leading-5 py-4 text-gray-600 dark:text-gray-200 break-word p-6 post-content"> <!-- 'post-content' クラスを追加 -->
                 <%= post.content %>
             </div>
 
             
             <% if current_user.own?(post) %>
-              <div class="flex justify-between px-6">
-                <div class="badge badge-outline flex space-x-2 mt-1 px-6">
-                  <%= render 'crud_menus', post: post %>
-                </div>
+            <div class="flex justify-between px-6">
+            <div class="badge badge-outline flex space-x-2 mt-1 px-6">
+            <%= render 'shared/crud_menus', post: post %>
+        </div>
+        
+        
                 <div class="badge badge-outline flex space-x-2">
-                    <%= link_to 'twitter投稿', "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活&hashtags=おはログ", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
+                <%= link_to t('defaults.post_to_twitter'), "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活,おはログ", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
                 </div>
             </div>
-           <% end %>
+        <% end %>
         
             
 
-            <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center p-4">
-              <%= l post.created_at, format: :long %>
-             
-              <div class="badge badge-outline flex space-x-2">
-
-                <%= render 'likes/like_button', post: post %>
-            
-                <div class="badge badge-outline text-xl text-black"> <%= icon("regular", "comment") %> </div>
-                </div>
-            </div>
+        <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center p-4">
+        <%= l post.created_at, format: :long %>
+    
+        <div class="badge badge-outline flex space-x-2">
+            <%= render 'likes/like_button', post: post %>
+            <%= link_to post_path(post), class: "badge badge-outline text-xl text-black" do %>
+                <%= icon("regular", "comment") %> <%= post.comments.count %>
+            <% end %>
+        </div>
+    </div>
+    
 </div>  
    
 

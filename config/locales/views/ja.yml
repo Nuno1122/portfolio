@@ -9,6 +9,8 @@ ja:
     register: 登録
     required: 必須
     guest_user: ゲストユーザー
+    back: "戻る"
+    post_to_twitter: "twitter投稿"
   users:
     new:
       title: 'ユーザー登録'
@@ -42,31 +44,46 @@ ja:
       success: 投稿が完了しました
       fail: 投稿に失敗しました
       post: 投稿する
+    destroy:
+      success: 投稿を削除しました。
+    show:
+      title: コメント一覧
   start_time_plans:
-    title: 目標の朝活開始時刻
-    set_target_start_time: 目標の朝活開始時刻を設定する
+    title: 目標朝活開始時刻
+    set_target_start_time: 目標朝活開始時刻を設定する
     create:
-      success: 目標の朝活開始時刻を作成しました
-      fail: 目標の朝活開始時刻作成に失敗しました
+      success: 目標朝活開始時刻を作成しました
+      fail: 目標朝活開始時刻作成に失敗しました
     update: 
-      success: 目標の朝活開始時刻を更新しました
-      fail: 目標の朝活開始時刻更新に失敗しました
+      success: 目標朝活開始時刻を更新しました
+      fail: 目標朝活開始時刻更新に失敗しました
   morning_activity_logs:
     create:
       success: 朝活を開始しました
       fail: 朝活を開始できませんでした
       is_morning_activity_not_allowed:
         fail: 早朝3:00までは打刻できません
+    start_morning_activity: "朝活開始"
   oauths:
     callback:
       success: Twitterアカウントでのログインに成功しました
       fail: Twitterアカウントでログインに失敗しました
       denied:
         success: Twitterアカウントでのアカウント作成に成功しました
+  profiles:
+    show:
+      title: プロフィール
   views:
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
-      truncate: "..."
+      truncate: "&hellip;"
+  comments:
+    create:
+      success: コメントを投稿しました。
+      fail: コメントの投稿に失敗しました。 
+      post: コメントを投稿する
+    destroy:
+      success: コメントを削除しました。

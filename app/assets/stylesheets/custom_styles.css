@@ -21,12 +21,16 @@ main {
 }
 
 .bg-achieved-background-count-color {
-  background-color: #bfecff;
+  background-color: #d5f0ff;
 }
 
+
+
 .text-achieved_count-color {
-  color: #29cd6a;
   font-weight: bold;
+  text-shadow:
+  0 5px 5px  #9bb000,
+  1px 1px 1px #b6b002;
 }
 
 /* メッセージ入力フォームの幅 */
@@ -158,4 +162,22 @@ aside {
 .fade-in {
   animation: fadeIn 0.8s ease-in-out;
   animation-fill-mode: forwards;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.rounded-corners {
+  border-radius: 15px;
+}
+
+.text-outline {
+  text-shadow:
+  0 5px 5px #4F46E5,
+  1px 1px 1px #4F46E5;
 }

@@ -2,10 +2,10 @@
 <%= render 'shared/error_messages', object: start_time_plan %>
 </div>
 <div class="flex flex-col items-center text-xl font-bold">
-  <%= f.label :start_time, '4:00~10:00の間で設定してください' %>
+  <%= f.label :start_time, '4:00~10:00の間で設定してください', class:'text-xl font-semibold text-white text-outline' %>
 </div>
 <div class="flex flex-col items-center text-xl font-bold">
-  <%= f.label :start_time, t('start_time_plans.title') %>
+  <%= f.label :start_time, t('start_time_plans.title'), class:'text-xl font-semibold text-white text-outline' %>
 </div>
 <div class="flex flex-col items-center">
   <%= f.time_field :start_time, class: 'form-control', min: '4:00', max: '10:00' %>

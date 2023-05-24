@@ -19,3 +19,6 @@ ja:
         content: メッセージ
       start_time_plan:
         start_time: "目標朝活開始時刻"
+      comment:
+        content: コメント
+        submit: コメントを投稿する

@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @post = @comment.post
     session[:return_to] = request.referer
     render turbo_stream: turbo_stream.replace(
       @post,

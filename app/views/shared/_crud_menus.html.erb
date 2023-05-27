@@ -1,8 +1,12 @@
 <div class="badge badge-outline flex justify-end space-x-5">
-    <div class="badge badge-outline text-2xl text-black"> <%= icon("solid", "pen") %></div>
-    <div class="badge badge-outline text-2xl text-black">
-        <%= button_to post_path(post), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } do %>
-            <i class="fas fa-trash"></i>
-        <% end %>     
+  <%= turbo_frame_tag dom_id(post, :edit) do %>
+    <div class="badge badge-outline text-2xl text-black"> 
+      <%= link_to icon("solid", "pen"), edit_post_path(post), data: { turbo_frame: "edit_modal" } %>
     </div>
+  <% end %>
+  <div class="badge badge-outline text-2xl text-black">
+    <%= button_to post_path(post), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
+  </div>
 </div>

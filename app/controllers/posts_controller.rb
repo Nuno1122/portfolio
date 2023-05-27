@@ -3,10 +3,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(user: %i[start_time_plan morning_activity_logs]).order(created_at: :desc).page(params[:page])
   end
+  
 
   def new
     @post = Post.new
-  end
+  end  
 
   def create
     @post = current_user.posts.build(post_params)
@@ -19,9 +20,29 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(comments: :user).find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
+  end
+
+  def edit
+    session[:return_to] = request.referer
+    @post = Post.find(params[:id])
+    render turbo_stream: turbo_stream.replace(
+      @post,
+      partial: 'edit_modal',  # _edit を _edit_modal に変更
+      locals: { post: @post }
+    )
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+  
+    if @post.update(post_params)
+      redirect_to session.delete(:return_to), success: t('.success')
+    else
+      flash.now[:error] = t('.fail')
+      render '_edit_modal', status: :unprocessable_entity
+    end
   end
   
   def destroy
@@ -36,6 +57,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.includes(comments: :user).find(params[:id])
   end
+    
 end

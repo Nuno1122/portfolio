@@ -64,7 +64,10 @@
         <%= l post.created_at, format: :long %>
     
         <div class="badge badge-outline flex space-x-2">
-            <%= render 'likes/like_button', post: post %>
+            <% cache post do %>
+              <%= render partial: 'likes/like_button', locals: { post: post } %>
+            <% end %>
+        
             <%= link_to post_path(post), class: "badge badge-outline text-xl text-black" do %>
                 <%= icon("regular", "comment") %> <%= post.comments.count %>
             <% end %>

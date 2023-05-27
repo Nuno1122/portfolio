@@ -91,5 +91,10 @@ ja:
       success: コメントを投稿しました。
       fail: コメントの投稿に失敗しました。 
       post: コメントを投稿する
+    edit:
+      post: 更新する 
+    update:
+      success: コメントを更新しました
+      fail: コメントの更新に失敗しました。 
     destroy:
       success: コメントを削除しました。

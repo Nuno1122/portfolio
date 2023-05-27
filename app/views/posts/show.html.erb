@@ -105,12 +105,16 @@
                     <%= l comment.created_at, format: :long %>
                     <% if comment.user_id == current_user.id %>
                         <div class="badge badge-outline flex justify-end space-x-4 mr-2 mb-2">
-                            <div class="badge badge-outline text-xl text-black"> <%= icon("solid", "pen") %></div>
-                            <div class="badge badge-outline text-xl text-black">
-                                <%= button_to post_comment_path(@post, comment), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } do %>
-                                    <i class="fas fa-trash"></i>
-                                <% end %>     
+                          <%= turbo_frame_tag dom_id(comment, :edit) do %>
+                            <div class="badge badge-outline text-2xl text-black"> 
+                              <%= link_to icon("solid", "pen"), edit_post_comment_path(@post, comment), data: { turbo_frame: "edit_modal" } %>
                             </div>
+                          <% end %>
+                          <div class="badge badge-outline text-xl text-black">
+                            <%= button_to post_comment_path(@post, comment), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } do %>
+                              <i class="fas fa-trash"></i>
+                            <% end %>     
+                          </div>
                         </div>
                     <% end %>
                 </div>

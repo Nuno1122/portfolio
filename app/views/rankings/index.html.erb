@@ -1,0 +1,41 @@
+<div class="container mx-auto max-w-lg py-6 px-4">
+  <div class="flex flex-col items-center  bg-achieved-background-count-color rounded-lg p-4 shadow-md">
+    <i class="fas fa-trophy text-3xl text-achieved_count-color text-yellow-200"></i>
+    <h1 class="text-2xl text-center text-achieved_count-color text-yellow-100">朝活達成回数ランキング</h1> 
+  </div>
+  <div class="flex flex-col items-center rounded-lg p-4 shadow-md pt-4 pb-4 mt-4 mb-4">
+    <%= form_with url: rankings_path, method: :get, local: true do |f| %>
+      <%= f.select :year, options_for_select((Time.current.year - 0..Time.current.year).to_a.reverse, selected: params[:year] || Time.current.year) %>
+      <%= f.label :year, '年' %>
+      <%= f.select :month, options_for_select((1..12).to_a, selected: params[:month] || Time.current.month) %>
+      <%= f.label :month, '月' %>
+      <%= f.submit '表示', class: 'btn btn-primary inline-block rounded-lg bg-indigo-500 px-6 py-2 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base ' %>
+    <% end %>
+  </div>
+  <div class="flex flex-col rounded-lg ">
+    <% previous_count = nil %>
+    <% rank = 0 %>
+    <% @ranking.each_with_index do |(user_id, achieved_count), index| %>
+      <% rank += 1 if previous_count != achieved_count %>
+      <% user = User.find(user_id) %>
+      <div class="<%= rank <= 3 ? "flex flex-col bg-primary-color rounded-lg p-4 shadow-md mb-4" : "flex flex-col bg-secondary-color rounded-lg p-4 shadow-md mb-4" %>">
+        <div class="flex items-center py-2 flex-wrap">
+          <span class="<%= rank == 1 ? 'text-2xl text-achieved-gold' : rank == 2 ? 'text-xl text-achieved-silver' : rank == 3 ? 'text-l text-achieved-bronze' : 'text-m' %> mr-2"><%= rank %></span>
+          <div class="flex-grow flex items-center mr-2">
+            <% if user.image_url.present? %>
+              <%= image_tag user.image_url, class: 'rounded-full w-9 h-9 mr-2' %> 
+            <% else %>
+              <%= icon("solid", "user-circle", size: '3xl', additional_classes: 'mr-2') %> 
+            <% end %>
+            <%= link_to user.name, "#", class: 'text-xm' %>
+          </div>
+          <div class="text-right <%= rank == 1 ? 'text-xl text-achieved-gold' : rank == 2 ? 'text-l text-achieved-silver' : rank == 3 ? 'text-l text-achieved-bronze' : 'text-m' %>">
+            <%= achieved_count %> 回
+          </div>
+          </div>
+          </div>
+          <% previous_count = achieved_count %>
+        <% end %>
+      </div>
+    </div>
+    

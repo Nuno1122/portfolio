@@ -33,6 +33,39 @@ main {
   1px 1px 1px #b6b002;
 }
 
+.text-achieved-gold {
+  color: rgb(255, 252, 154);
+  font-weight: bold;
+  text-shadow:
+  0 5px 5px  #524e0b,
+  1px 1px 1px #3a3915;
+}
+
+.text-achieved-silver {
+  color: rgb(255, 248, 248);
+  font-weight: bold;
+  text-shadow:
+  0 5px 5px #5b5b5b,
+  1px 1px 1px #4f4f4f;
+}
+
+.text-achieved-bronze {
+  color: #ffab57;
+  font-weight: bold;
+  text-shadow:
+  0 5px 5px #503318,
+  1px 1px 1px #60462d;
+}
+
+.bg-primary-color {
+  background-color: rgb(254, 255, 245);
+}
+
+.bg-secondary-color {
+  background-color: rgba(237, 237, 237, 0.83);
+}
+
+
 /* メッセージ入力フォームの幅 */
 .text-area-custom-height {
   height: 160px; /* 高さ */

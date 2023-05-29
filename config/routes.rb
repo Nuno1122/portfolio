@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :likes, only: :index
   resources :start_time_plans, only: %i[new create edit update]
   resources :morning_activity_logs, only: %i[index create]
+  resources :rankings, only: :index
 end

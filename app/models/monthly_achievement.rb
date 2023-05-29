@@ -40,4 +40,17 @@ class MonthlyAchievement < ApplicationRecord
     self.achieved_count = achieved_count.to_i + INCREMENT_VALUE
       save!
   end
+
+  # ユーザーごとの達成数の合計を取得し、達成数の降順でソートした結果を返すメソッド
+  def self.ranking
+    group(:user_id).sum(:achieved_count).sort_by { |_, achieved_count| achieved_count }.reverse
+  end
+
+  def self.achievements_ranking(year, month)
+    where(year: year, month: month)
+      .group(:user_id)
+      .sum(:achieved_count)
+      .sort_by { |_, count| -count }
+  end
+
 end

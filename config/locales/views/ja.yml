@@ -11,6 +11,7 @@ ja:
     guest_user: ゲストユーザー
     back: "戻る"
     post_to_twitter: "twitter投稿"
+    close: "閉じる"
   users:
     new:
       title: 'ユーザー登録'
@@ -44,10 +45,15 @@ ja:
       success: 投稿が完了しました
       fail: 投稿に失敗しました
       post: 投稿する
+    edit:
+      post: 更新する
     destroy:
       success: 投稿を削除しました。
     show:
       title: コメント一覧
+    update:
+      success: 投稿を更新しました。
+      fail: 投稿の更新に失敗しました。
   start_time_plans:
     title: 目標朝活開始時刻
     set_target_start_time: 目標朝活開始時刻を設定する
@@ -85,5 +91,10 @@ ja:
       success: コメントを投稿しました。
       fail: コメントの投稿に失敗しました。 
       post: コメントを投稿する
+    edit:
+      post: 更新する 
+    update:
+      success: コメントを更新しました
+      fail: コメントの更新に失敗しました。 
     destroy:
       success: コメントを削除しました。

@@ -1,0 +1,19 @@
+<div id="edit_modal" class="modal fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+  <div class="modal-content bg-white p-6 rounded-md shadow-lg max-w-sm mx-auto">
+    <%= form_with(model: @post, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="flex flex-col items-center">
+        <%= f.text_area :content, class:'inline-block rounded-lg bg-white px-10 py-12 text-center text-sm font-semibold text-black outline-none ring-indigo-300 transition duration-100 hover:bg-white focus-visible:ring active:bg-white md:text-base' %>
+      </div>
+
+      <div class="flex flex-col items-center mt-4">
+        <%= f.submit  (t 'posts.edit.post'), class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+      </div>
+    <% end %>
+    <div class="flex flex-col items-center">
+    <%= link_to (t 'defaults.close'), :back || posts_path, data: { turbo_frame: 'modal', action: 'replace' }, class: 'bg-blue-500 text-white px-4 py-2 rounded mt-4' %>
+</div>
+
+  </div>
+</div>

@@ -102,21 +102,21 @@
                 <p class="break-word mb-2 px-6 pt-1" style="overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; hyphens: auto; height: 100px; overflow-y: auto;"><%= comment.content %></p>
 
                 <div class="<%= comment.user_id == current_user.id ? 'pb-2' : 'pb-4' %> text-sm leading-5 py-0 text-gray-400 flex justify-between items-center px-5 ">
-                    <%= l comment.created_at, format: :long %>
-                    <% if comment.user_id == current_user.id %>
-                        <div class="badge badge-outline flex justify-end space-x-4 mr-2 mb-2">
-                          <%= turbo_frame_tag dom_id(comment, :edit) do %>
-                            <div class="badge badge-outline text-2xl text-black"> 
-                              <%= link_to icon("solid", "pen"), edit_post_comment_path(@post, comment), data: { turbo_frame: "edit_modal" } %>
-                            </div>
-                          <% end %>
-                            <div class="badge badge-outline text-xl text-black">
-                                <%= button_to post_comment_path(@post, comment), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } do %>
-                                    <i class="fas fa-trash"></i>
-                                <% end %>     
-                            </div>
+                <%= l comment.created_at, format: :long %>
+                <% if comment.user_id == current_user.id %>
+                    <div class="badge badge-outline flex justify-end space-x-4 mr-2 mb-2">
+                      <%= turbo_frame_tag dom_id(comment, :edit) do %>
+                        <div class="badge badge-outline text-2xl text-black"> 
+                          <%= link_to icon("solid", "pen"), edit_post_comment_path(@post, comment), data: { turbo_frame: "edit_modal" } %>
                         </div>
-                    <% end %>
+                      <% end %>
+                        <div class="badge badge-outline text-xl text-black">
+                            <%= button_to post_comment_path(@post, comment), method: :delete, form: { data: { turbo_confirm: "削除しますか？" } } do %>
+                                <i class="fas fa-trash"></i>
+                            <% end %>     
+                        </div>
+                    </div>
+                <% end %>
                 </div>
             </div>
         <% end %>

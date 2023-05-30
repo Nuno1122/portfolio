@@ -15,9 +15,9 @@ class OauthsController < ApplicationController
     begin
       create_user_from(provider) unless (@user = login_from(provider))
       redirect_to morning_activity_logs_path, success: t('.success')
-
-      # rescue StandardError
-      # redirect_to root_path, error: t('.fail')
+    rescue StandardError => e
+      Rails.logger.error e.message
+      redirect_to root_path, error: t('.fail')
     end
   end
 

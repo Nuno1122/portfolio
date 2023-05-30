@@ -14,9 +14,9 @@
   </div>
   <div class="flex flex-col rounded-lg ">
     <% @ranking.each do |ranking| %>
-      <div class="<%= ranking[:rank] <= RankingsController::TOP_RANK ? 'flex flex-col bg-primary-color rounded-lg p-4 shadow-md mb-4' : 'flex flex-col bg-secondary-color rounded-lg p-4 shadow-md mb-4' %>">
+      <div class="<%= ranking_background_style(ranking[:rank]) %>">
         <div class="flex items-center py-2 flex-wrap">
-          <span class="<%= RankingsController::RANK_TEXT_STYLES.fetch(ranking[:rank], RankingsController::RANK_TEXT_STYLES[:default]) %> mr-2"><%= ranking[:rank] %></span>
+        <span class="<%= rank_text_style(ranking[:rank]) %> mr-2"><%= ranking[:rank] %></span>
           <div class="flex-grow flex items-center mr-2">
             <% if ranking[:user].image_url.present? %>
               <%= image_tag ranking[:user].image_url, class: 'rounded-full w-9 h-9 mr-2' %> 

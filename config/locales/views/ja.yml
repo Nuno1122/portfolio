@@ -10,8 +10,9 @@ ja:
     required: 必須
     guest_user: ゲストユーザー
     back: "戻る"
-    post_to_twitter: "twitter投稿"
+    post_to_twitter: twitter投稿
     close: "閉じる"
+    display: "表示"
   users:
     new:
       title: 'ユーザー登録'
@@ -64,12 +65,12 @@ ja:
       success: 目標朝活開始時刻を更新しました
       fail: 目標朝活開始時刻更新に失敗しました
   morning_activity_logs:
-    create:
-      success: 朝活を開始しました
-      fail: 朝活を開始できませんでした
-      is_morning_activity_not_allowed:
-        fail: 早朝3:00までは打刻できません
-    start_morning_activity: "朝活開始"
+      create:
+        success: 朝活を開始しました
+        fail: 朝活を開始できませんでした
+        is_morning_activity_not_allowed:
+          fail: 早朝3:00までは打刻できません
+      start_morning_activity: "朝活開始"
   oauths:
     callback:
       success: Twitterアカウントでのログインに成功しました
@@ -98,3 +99,11 @@ ja:
       fail: コメントの更新に失敗しました。 
     destroy:
       success: コメントを削除しました。
+  rankings:
+    title: ランキング
+    index:
+       title: 朝活達成回数ランキング
+       year: 年
+       month: 月
+       submit: 表示
+   

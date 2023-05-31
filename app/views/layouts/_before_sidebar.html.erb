@@ -1,6 +1,7 @@
 <div class="listings_channels" style="margin-top: 70px;">
   <h2 class="listings_header"></h2>
   <ul class="channel_list">
+    <%= link_to t('rankings.title'), rankings_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded-md mb-2" %>
     <%= link_to (t 'defaults.login'), login_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded-md mb-2" %>
     <%= link_to (t 'defaults.sign_up'), new_user_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded-md" %>
   </ul>

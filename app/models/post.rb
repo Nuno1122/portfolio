@@ -24,7 +24,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :content, presence: true
-  MAX_CONTENT_LENGTH = 260
+  MAX_CONTENT_LENGTH = 230
   validate :content_length
 
   def likes_count

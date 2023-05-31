@@ -23,7 +23,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :post
   validates :content, presence: true
-  MAX_CONTENT_LENGTH = 270
+  MAX_CONTENT_LENGTH = 230
   validate :content_length
 
   private

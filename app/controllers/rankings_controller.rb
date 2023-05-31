@@ -1,4 +1,5 @@
 class RankingsController < ApplicationController
+  skip_before_action :require_login, only: [:index]# このコントローラのindexアクションでは、ログイン要求をスキップし、ログインしていないユーザーでもランキングページを閲覧できるようにする
   TOP_RANK_COUNT = 20 # ランキングに表示する上位の数
   TOP_RANK = 3 # ランキング上位（ゴールド、シルバー、ブロンズ）の閾値
   

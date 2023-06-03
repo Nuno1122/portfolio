@@ -1,19 +1,20 @@
 <header class="flex items-center justify-between py-4 px-4 md:py-8 md:px-8">
-    <!-- logo - start -->
-    <%= link_to "/", class: "text-black-800 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl", aria: { label: "logo" } do %>
-      おはログ!!🌞
-    <% end %>
+<!-- logo - start -->
+  <%= link_to "/", class: "text-black-800 inline-flex items-center gap-2.5 text-2xl font-bold md:text-3xl", aria: { label: "logo" } do %>
+    おはログ!!🌞
+  <% end %>
       
-    <!-- logo - end -->
+  <!-- logo - end -->
 
-
-      <!-- buttons - start -->
+  <!-- buttons - start -->
      
-      <div class="mr-2 flex justify-end">
-  <%= link_to (t 'defaults.login'), login_path, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base hidden sm:block" %>
-  <%= link_to (t 'defaults.sign_up'), new_user_path, class: "inline-block rounded-lg bg-indigo-500 px-7 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base hidden sm:block" %>
-</div>
+  <div class="mr-2 flex justify-end">
+    <%= link_to t('rankings.title'), rankings_path, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base hidden sm:block" %>
+    <%= link_to (t 'defaults.login'), login_path, class: "inline-block rounded-lg px-4 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:text-indigo-500 focus-visible:ring active:text-indigo-600 md:text-base hidden sm:block" %>
+    <%= link_to (t 'defaults.sign_up'), new_user_path, class: "inline-block rounded-lg bg-indigo-500 px-7 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base hidden sm:block" %>
+  </div>
+
+  <!-- buttons - end -->
+</header>
 
 
-      <!-- buttons - end -->
-    </header>

@@ -1,7 +1,14 @@
 <div class="listings_channels" style="margin-top: 70px;">
   <h2 class="listings_header"></h2>
   <ul class="channel_list">
+    <%= link_to t('rankings.title'), rankings_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded-md mb-2" %>
     <%= link_to (t 'defaults.login'), login_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded-md mb-2" %>
     <%= link_to (t 'defaults.sign_up'), new_user_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 rounded-md" %>
+
+    <div class="fixed inset-x-0 bottom-10">
+      <%= link_to (t 'defaults.terms_of_use'), "terms", class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+      <%= link_to (t 'defaults.privacy_policy'), "privacy", class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+      <%= link_to (t 'defaults.contact'), "https://docs.google.com/forms/d/e/1FAIpQLSeife8uWWscUP7QopCpTWHUJtAbSyw4-4s6eeF_Sl3oio6VyA/viewform", class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    </div>
   </ul>
 </div>

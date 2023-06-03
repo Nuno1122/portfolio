@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'oauth/callback', to: 'oauths#callback'
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   delete 'logout', to: 'user_sessions#destroy'
+  get 'terms', to: 'tops#terms'
+  get 'privacy', to: 'tops#privacy'
   resources :users, only: %i[new create destroy]
   resources :posts do
     resource :likes, only: %i[create destroy]

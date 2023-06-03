@@ -1,29 +1,36 @@
 <div class="listings">
-  <div class="listings_channels" style="margin-top: 70px;">
-    <h2 class="listings_header"></h2>
-    <ul class="channel_list">
+<div class="listings_channels" style="margin-top: 70px;">
+  <h2 class="listings_header"></h2>
+  <ul class="channel_list">
     <!-- nav - start -->
-
-      <div class="flex items-center" style="margin-top: 10px; margin-left: 15px;">
-        <% if current_user && current_user.image_url.present? %>
-          <%= image_tag current_user.image_url, size: 'xl', class: 'rounded-full' %>
-        <% else %>
-          <%= icon("solid", "user-circle", size: 'xl') %>
-        <% end %>
-      </div>
-      <% if current_user %>
-        <%= link_to current_user.name, morning_activity_logs_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    
+    <div class="flex items-center" style="margin-top: 10px; margin-left: 15px;">
+      <% if current_user && current_user.image_url.present? %>
+        <%= image_tag current_user.image_url, size: 'xl', class: 'rounded-full' %>
+      <% else %>
+        <%= icon("solid", "user-circle", size: 'xl') %>
       <% end %>
-      <div style="border: 0.5px solid black; width: 90%; margin-left: 5%; margin-right: 5%;"></div>
-    <!-- nav - end -->
+    </div>
+    <% if current_user %>
+      <%= link_to current_user.name, morning_activity_logs_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <% end %>
 
-      <div style="margin-top: 15px;">
-        <%= link_to t('defaults.title'), morning_activity_logs_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
-        <%= link_to t('posts.new.title'), new_post_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
-        <%= link_to t('posts.index.title'), posts_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
-        <%= link_to t('rankings.title'),  rankings_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
-        <%= button_to(t('defaults.logout'), logout_path, method: :delete, class: "block w-full py-2 px-4 text-sm text-gray-700 text-left hover:bg-gray-100") %>
-      </div>
-    </ul>
-  </div>
+
+
+    <div style="border: 0.5px solid black; width: 90%; margin-left: 5%; margin-right: 5%;"></div>
+    <!-- nav - end -->
+    <div style="margin-top: 15px;">
+    <%= link_to t('defaults.title'), morning_activity_logs_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%= link_to t('posts.new.title'), new_post_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%= link_to t('posts.index.title'), posts_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%= link_to t('rankings.title'),  rankings_path, class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%= button_to(t('defaults.logout'), logout_path, method: :delete, class: "block w-full py-2 px-4 text-sm text-gray-700 text-left hover:bg-gray-100") %>
+    </div>
+    
+    <div class="fixed inset-x-0 bottom-10">
+    <%= link_to (t 'defaults.terms_of_use'), "terms", class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%= link_to (t 'defaults.privacy_policy'), "privacy", class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    <%= link_to (t 'defaults.contact'), "https://docs.google.com/forms/d/e/1FAIpQLSeife8uWWscUP7QopCpTWHUJtAbSyw4-4s6eeF_Sl3oio6VyA/viewform", class: "block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100" %>
+    </div>
+  </ul>
 </div>

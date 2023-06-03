@@ -5,15 +5,18 @@ ja:
     guest_login: ゲストログイン
     logout: ログアウト
     sign_up: 新規登録
-    edit: '編集'
-    delete: '削除'
+    edit: 編集
+    delete: 削除
     register: 登録
     required: 必須
     guest_user: ゲストユーザー
-    back: "戻る"
+    back: 戻る
     post_to_twitter: twitter投稿
-    close: "閉じる"
-    display: "表示"
+    close: 閉じる
+    display: 表示
+    terms_of_use: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
   users:
     new:
       title: 'ユーザー登録'

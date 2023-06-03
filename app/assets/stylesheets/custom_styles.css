@@ -20,6 +20,23 @@ main {
   flex-grow: 1;
 }
 
+.content {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+
+.center-content {
+  min-height: 100vh; /* Adjust the height based on the viewport */
+  width: 100%; /* Adjust the width based on the viewport */
+  min-width:: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Ensures the flex items are stacked vertically */
+  padding: 1rem; /* Add a little bit of padding to handle very small viewports */
+}
+
 .bg-achieved-background-count-color {
   background-color: #d5f0ff;
 }

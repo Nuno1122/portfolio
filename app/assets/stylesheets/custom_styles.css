@@ -29,7 +29,7 @@ main {
 .center-content {
   min-height: 100vh; /* Adjust the height based on the viewport */
   width: 100%; /* Adjust the width based on the viewport */
-  min-width:: 100vh;
+  
   display: flex;
   justify-content: center;
   align-items: center;

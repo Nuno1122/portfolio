@@ -25,6 +25,7 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
+gem 'sassc-rails'
 gem 'tailwindcss-rails'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
@@ -100,3 +101,5 @@ gem 'dockerfile-rails', '>= 1.2', group: :development
 gem 'timecop', group: %i[development test]
 
 gem 'kaminari'
+
+gem 'simple_calendar', '~> 2.4', '>= 2.4.3'

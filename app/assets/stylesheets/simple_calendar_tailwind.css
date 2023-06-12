@@ -1,0 +1,49 @@
+/* simple_calendar_tailwind.css */
+
+.simple-calendar table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.calendar-heading {
+  font-size: 2em; /* default font size */
+}
+
+/* For medium devices (tablets, less than 992px) */
+@media (max-width: 992px) { 
+  .calendar-heading {
+      font-size: 1.5em; 
+  }
+}
+
+/* For small devices (phones, less than 768px) */
+@media (max-width: 768px) { 
+  .calendar-heading {
+      font-size: 1.2em; 
+  }
+}
+
+thead th {
+background-color:  #6366F1;  /* Tailwind CSS's indigo-500 */
+font-weight: bold;
+color: white;  /* 文字を中心に寄せる */
+text-align: center;
+}
+
+
+
+
+.green-background {
+  background-color: #a7ff9b; /* グリーンの背景色を指定 */
+  border-radius: 5px; /* 角を丸くする */
+  height: 33px;
+  width: 33px;
+}
+
+.red-background {
+  background-color: #ff6363; /* レッドの背景色を指定 */
+  border-radius: 5px; /* 角を丸くする */
+  height: 33px;
+  width: 33px;
+}

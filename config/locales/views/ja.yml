@@ -110,4 +110,6 @@ ja:
        year: 年
        month: 月
        submit: 表示
-   
+  simple_calendar:
+    previous: ←
+    next: →

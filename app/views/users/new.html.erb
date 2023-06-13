@@ -36,8 +36,7 @@
       <%= f.button (t 'defaults.register'), class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
       </div>
       
-    
-      <p class="text-xs text-white">By signing up to our newsletter you agree to our <a href="#" class="underline transition duration-100 hover:text-indigo-500 active:text-indigo-600">Privacy Policy</a>.</p>
+      <p class="text-xs text-white">By signing up to our newsletter you agree to our <%= link_to "Privacy Policy", privacy_path, class: "underline transition duration-100 hover:text-indigo-500 active:text-indigo-600" %>.</p>
       </div>
       </div>
       <% end %>

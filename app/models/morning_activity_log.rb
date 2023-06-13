@@ -106,6 +106,10 @@ class MorningActivityLog < ApplicationRecord
     started_time.between?(allowed_start_time, allowed_end_time)
   end
 
+  def start_time
+    started_time
+  end
+
   private
 
   # 新しい月を初期化する必要がある場合、その処理を行うメソッドです。

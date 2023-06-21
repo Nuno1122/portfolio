@@ -16,7 +16,7 @@
 <% if current_user && current_user.image_url.present? %>
 <%= image_tag current_user.image_url, size: '4xl', class: 'rounded-full' %>
 <% else %>
-<%= icon("solid", "user-circle", size: '4xl') %>
+<%= icon("solid", "user-circle", size: '3xl', additional_classes: 'mr-2') %> 
 <% end %>
 </div>
 
@@ -25,7 +25,6 @@
 <!-- nav - end -->
 
 <!-- buttons - start -->
-<%= link_to t('posts.new.title'), new_post_path, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base hidden sm:block" %>
             
 <%= link_to t('posts.index.title'), posts_path, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base hidden sm:block" %>
           

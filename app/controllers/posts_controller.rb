@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  skip_before_action :require_login, only: [:index, :show]# このコントローラのindexアクションでは、ログイン要求をスキップし、ログインしていないユーザーでもランキングページを閲覧できるようにする
   def index
     @posts = Post.includes(user: %i[start_time_plan morning_activity_logs]).order(created_at: :desc).page(params[:page])
+    @achieved_count = params[:achieved_count].to_i
+    @previous_achieved_count = params[:previous_achieved_count].to_i
   end
   
 
   def new
     @post = Post.new
-  end  
+    @morning_activity_not_allowed = MorningActivityLog.is_morning_activity_not_allowed?(current_user)
+  end
 
   def create
     @post = current_user.posts.build(post_params)

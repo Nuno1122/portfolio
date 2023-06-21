@@ -1,16 +1,94 @@
-<section class="min-h-96 flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-lg  py-16  md:py-20 xl:py-48">
-     
-      <!-- text start -->
-      <div class="flex flex-col items-center p-4 sm:max-w-xl">
-        <p class="mb-4 text-center text-lg text-white sm:text-xl md:mb-8">Wake up and start moving! Morning Activity Start Time Recording Tool</p>
-        <h1 class="mb-5 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-5xl">目覚めて活動開始!</h1>
-        <h1 class="mb-5 text-center text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-5xl">朝活開始時刻記録ツール</h1>
+<section class="min-h-96 flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-lg md:mt-20">
+  <div class="hero min-h-screen flex flex-col items-center justify-center text-base-200 md:mt-20">
+    <div class="hero-content text-center mt-20 md:mt-8">
+      <div class="max-w-xl">
+        
+        <h1 class="mb-5 text-center text-6xl font-bold sm:text-7xl md:mb-12 md:text-8xl py-8  font-bold mb-2 text-white text-outline">おはログ!!🌞</h1>
+        <p class="py-4 px-4 sm:px-0 text-l font-bold  mb-2 text-white text-outline">おはログ!!🌞とは？<br>朝活開始時刻を<span class="block sm:inline">手軽に記録し見える化することで<br></span>毎日の継続を楽しく支える<span class="block sm:inline">朝活サポートサービスです</span></p>
+          <% unless logged_in? %>
+            <div class="mt-10">
+              <%= link_to rankings_path, class: "btn my-4 inline-block rounded-lg bg-indigo-500 px-6 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700  mr-4" do %>
+                <span>ユーザーランキングを見てみる</span>
+              <% end %>
+              <%= link_to posts_path, class: "btn my-4 inline-block rounded-lg bg-achieved-background-count-color px-6 py-3 text-center text-sm font-semibold text-indigo-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:bg-gray-500 " do %>
+                <span>朝活メッセージ一覧を見てみる</span>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+    <div class="center-content">
+      <div class="hero-content text-center my-12">
+        <div class="containe bg-primary-color p-4 rounded-lg shadow-md text-item mx-auto  mb-10">
 
-        <div class="flex justify-center">
-        <%= button_to (t 'tops.start_now'), guest_login_path, method: :post, class: "inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
-      </div>
+          <h1 class="text-3xl font-bold py-4 mb-2 text-indigo-500">使用方法</h1>
+
+          <div class="hero-content flex flex-col lg:flex-row items-center lg:items-start">
+            <div class="p-4 lg:w-1/2">
+              <h2 class="text-3xl font-bold py-4">Step1</h2>
+              <p>会員登録後、<span class="block sm:inline">朝活の開始時刻を設定し、<br></span>毎日の目標にしましょう!</p>
+            </div>
+            <div class="flex justify-center lg:w-1/2">
+              <%= image_tag 'step1.png',  size: "400x260" %>
+            </div>
+          </div>
       
+          <div class="hero-content flex flex-col lg:flex-row-reverse items-center lg:items-start">
+            <div class="p-4 lg:w-1/2">
+              <h2 class="text-3xl font-bold py-4">Step2</h2>
+              <p>次に、早起きをして打刻を行います。</p>
+              <p>打刻の際には<br>朝活メッセージも作成できるので、<br>朝の挨拶や今日の意気込みを<br>共有しましょう！</p>
+            </div>
+            <div class="flex justify-center lg:w-1/2">
+              <%= image_tag 'step2.png', size: "400x260" %>
+            </div>
+          </div>
+
+
+          <div class="hero-content flex flex-col lg:flex-row items-center lg:items-start">
+            <div class="p-4 lg:w-1/2">
+              <h2 class="text-3xl font-bold py-4">Step3</h2>
+              <p>朝活メッセージ一覧画面では、<br>他のユーザーのメッセージをチェックできます。</p>
+              <p>朝活を行っている<br>他のユーザーのメッセージを見て、<br>朝活を習慣化しましょう！</p>
+            </div>
+            <div class="flex justify-center lg:w-1/2">
+              <%= image_tag 'step3.png', size: "400x260" %>
+            </div>
+          </div>
+
+          <div class="hero-content flex flex-col lg:flex-row-reverse items-center lg:items-start">
+            <div class="p-4 lg:w-1/2">
+              <h2 class="text-3xl font-bold py-4">Step4</h2>
+              <p>打刻した記録は<br>カレンダーに自動で表示されます。</p>
+              <p>成功可否によって色が変わるので、<br>継続的な挑戦が視覚的に確認できます。</p>
+            </div>
+            <div class="flex justify-center lg:w-1/2">
+              <%= image_tag 'step4.png', size: "400x260" %>
+            </div>
+          </div>
+
+          <div class="hero-content flex flex-col lg:flex-row items-center lg:items-start">
+            <div class="p-4 lg:w-1/2">
+              <h2 class="text-3xl font-bold py-4">Step5</h2>
+              <p>さらに、朝活の成功回数に基づいた<br>ランキング機能も提供しています。</p>
+              <p>高いランキングを目指すことで、<br>朝活の継続への意欲を引き立てましょう！</p>
+            </div>
+            <div class="flex justify-center lg:w-1/2">
+              <%= image_tag 'step5.png', size: "400x260" %>
+            </div>
+          </div>         
+        </div>
+
+        <% unless logged_in? %>
+          <div class="flex justify-center space-x-4">
+            <%= link_to new_user_path, class: "btn inline-block rounded-lg bg-indigo-500 px-7 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base mr-4" do %>
+              <span>新規登録</span>
+            <% end %>
+
+            <%= button_to "お試しで使ってみる", guest_login_path, method: :post, form_class: 'inline-block', class: "rounded-lg bg-gray-200 px-7 py-3 text-center text-sm font-semibold text-indigo-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:bg-indigo-700 md:text-base" %>
+          </div>
+        <% end %>
       </div>
-      <!-- text end -->
-    </section>
-<!-- hero - end -->
+    </div>
+  </div>
+</section>

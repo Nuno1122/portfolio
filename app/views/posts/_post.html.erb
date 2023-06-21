@@ -6,7 +6,7 @@
                 <% if post.user && post.user.image_url.present? %>
                     <%= image_tag post.user.image_url, class: 'rounded-full' %>
                 <% else %>
-                    <%= icon("solid", "user-circle", size: '4xl') %>
+                <%= icon("solid", "user-circle", size: '3xl', additional_classes: 'mr-2') %> 
                 <% end %>
               </div>
               <div class="pl-3 w-full">
@@ -45,7 +45,7 @@
             </div>
 
             
-            <% if current_user.own?(post) %>
+            <% if current_user&.own?(post) %>
             <div class="flex justify-between px-6">
             <div class="badge badge-outline flex space-x-2 mt-1 px-6">
             <%= render 'shared/crud_menus', post: post %>
@@ -53,13 +53,13 @@
         
         
                 <div class="badge badge-outline flex space-x-2">
-                <%= link_to t('defaults.post_to_twitter'), "https://twitter.com/intent/tweet?text=%0A#{post.content}%0A&hashtags=朝活,おはログ%0A#{'morning-activity.fly.dev'}", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
+                <%= link_to t('defaults.post_to_twitter'), "https://twitter.com/intent/tweet?text=#{post.content}%0A&hashtags=朝活,おはログ%0A#{'morning-activity.fly.dev'}", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
                 </div>
             </div>
         <% end %>
         
             
-
+        <% if current_user %>
         <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center p-4">
         <%= l post.created_at, format: :long %>
     
@@ -70,7 +70,18 @@
             <% end %>
         </div>
     </div>
-    
+
+    <% else %>
+        <div class="text-sm leading-5 py-2 text-gray-400 dark:text-gray-500 flex justify-between items-center p-4">
+          <%= l post.created_at, format: :long %>
+          <div class="badge badge-outline text-xl text-black">
+          <%= icon("solid", "thumbs-up") %> <%= post.likes.count %>
+          <%= link_to post_path(post), class: "badge badge-outline text-xl text-black" do %>
+            <%= icon("regular", "comment") %> <%= post.comments.count %>
+        <% end %>
+          </div>
+        </div>
+    <% end %>
 </div>  
    
 

@@ -45,7 +45,7 @@ ja:
       title: 朝活メッセージ一覧
       no_result: 投稿がありません。
     new:
-      title: 朝活メッセージ作成
+      title: 追加メッセージ作成
     create:
       success: 投稿が完了しました
       fail: 投稿に失敗しました
@@ -75,6 +75,8 @@ ja:
         is_morning_activity_not_allowed:
           fail: 早朝3:00までは打刻できません
       start_morning_activity: "朝活開始"
+      new:
+        title: 朝活メッセージ作成
   oauths:
     callback:
       success: Twitterアカウントでのログインに成功しました

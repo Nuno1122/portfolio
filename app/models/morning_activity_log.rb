@@ -23,8 +23,6 @@ class MorningActivityLog < ApplicationRecord
   # アソシエーションの設定
   belongs_to :user
   belongs_to :start_time_plan
-  has_many :monthly_achievements # 1つのログは複数の月間達成状況を持ちます。
-  has_many :posts # 1つのログは複数の投稿を持ちます。
 
   # 定数の設定
   ALLOWED_START_HOUR = 3

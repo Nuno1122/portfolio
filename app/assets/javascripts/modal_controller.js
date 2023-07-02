@@ -105,6 +105,7 @@ function generateRandomMessages(currentMonth, achievedCount) {
 `素晴らしい達成感！${currentMonth}月は${achievedCount}日間朝活成功！あなたの前途は明るく輝いています！`,
 `${currentMonth}月も${achievedCount}日間朝活達成！あなたの行動力が新しい道へと導いてくれます！`,
 `${currentMonth}月はこれで${achievedCount}日間朝活成功！あなたの勇敢な姿勢が大きな成果を引き寄せます！`,
+`${currentMonth}月もあと${31 - achievedCount}日！引き続きがんばりましょう！`,
 `すごい！！朝活達成！${currentMonth}月は${achievedCount}日間成功！あなたの行動力が夢を現実にします！`
   ];
   return messages;

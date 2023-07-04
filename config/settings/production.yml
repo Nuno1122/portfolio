@@ -1,2 +1,2 @@
 sorcery:
-  callback_url: 'https://morning-activity.fly.dev/oauth/callback?provider=twitter'
+  callback_url: 'https://oha-log.com/oauth/callback?provider=twitter'

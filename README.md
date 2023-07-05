@@ -103,4 +103,4 @@ https://www.figma.com/file/AZOsDuJ7keBIihRfMxLWE0/%E6%9C%9D%E6%B4%BB%E3%82%A2%E3
 
 ## ER図
 https://drive.google.com/file/d/1SIZjWR66RoF40pZJffNIQgrD504SYaPZ/view?usp=sharing
-<img width="547" alt="スクリーンショット 2023-06-22 13 59 10" src="https://github.com/Nuno1122/portfolio/assets/110162517/9515b8d1-822a-4ee0-9ed8-90b5f07226e8">
+<img width="517" alt="スクリーンショット 2023-07-05 19 22 57" src="https://github.com/Nuno1122/portfolio/assets/110162517/3cf060a6-5679-4951-b9a7-29d94187d441">

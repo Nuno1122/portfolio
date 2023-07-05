@@ -6,13 +6,6 @@
       <%= link_to (t 'defaults.privacy_policy'), privacy_path, class: "text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600" %>
       <%= link_to t('defaults.contact'), "https://docs.google.com/forms/d/e/1FAIpQLSeife8uWWscUP7QopCpTWHUJtAbSyw4-4s6eeF_Sl3oio6VyA/viewform", class: "text-gray-500 transition duration-100 hover:text-indigo-500 active:text-indigo-600" %>
       
-      <% unless logged_in? %>
-      <div class="block rounded-lg flex items-center justify-center">
-        <%= link_to auth_at_provider_path(provider: :twitter), data: { turbo_action: "replace" } do %>
-          <%= icon("brands", "twitter", size: 'l') %>
-        <% end %>
-      </div>
-     <% end %>
 
       </nav>
       <!-- nav - end -->

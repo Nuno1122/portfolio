@@ -39,6 +39,26 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }
   validates :email, presence: true, uniqueness: true
 
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    image_url = auth[:info][:image]
+    introduction = auth[:info][:introduction]
+  
+    user = User.find_or_create_by!(email: "#{provider}-#{uid}@example.com") do |user|
+      user.name = name
+      user.image_url = image_url
+      user.introduction = introduction
+      user.password = SecureRandom.hex(10) # ダミーパスワードの設定
+      user.password_confirmation = user.password
+    end
+    
+    user.authentications.find_or_create_by!(provider: provider, uid: uid)
+  
+    user
+  end
+
   def own?(object)
     id == object.user_id
   end

@@ -200,12 +200,15 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-oauth (1.2.0)
-      oauth
-      omniauth (>= 1.0, < 3)
-    omniauth-twitter (1.4.0)
-      omniauth-oauth (~> 1.1)
-      rack
+    omniauth-oauth2 (1.8.0)
+      oauth2 (>= 1.4, < 3)
+      omniauth (~> 2.0)
+    omniauth-rails_csrf_protection (1.0.1)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
+    omniauth-twitter2 (0.1.0)
+      omniauth
+      omniauth-oauth2 (~> 1.0)
     parallel (1.22.1)
     parser (3.2.1.1)
       ast (~> 2.4.1)
@@ -388,7 +391,8 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
-  omniauth-twitter
+  omniauth-rails_csrf_protection
+  omniauth-twitter2
   pg (~> 1.1)
   pry-byebug
   puma (~> 5.0)

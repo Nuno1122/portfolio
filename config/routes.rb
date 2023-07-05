@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   post 'guest_login', to: 'user_sessions#guest_login'
-  post 'oauth/callback', to: 'oauths#callback'
-  get 'oauth/callback', to: 'oauths#callback'
-  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+  get "/auth/twitter2/callback", to: "sessions#create"
+  get "/auth/failure", to: "sessions#failure"
+  delete "/sign_out", to: "sessions#destroy"
   delete 'logout', to: 'user_sessions#destroy'
   get 'terms', to: 'tops#terms'
   get 'privacy', to: 'tops#privacy'

@@ -83,6 +83,9 @@ ja:
       fail: Twitterアカウントでログインに失敗しました
       denied:
         success: Twitterアカウントでのアカウント作成に成功しました
+  sessions:
+    create:
+      success: Twitterアカウントでのログインに成功しました
   profiles:
     show:
       title: プロフィール

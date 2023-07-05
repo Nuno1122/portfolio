@@ -54,7 +54,8 @@ gem 'annotate'
 
 # Environment variables management
 gem 'dotenv-rails'
-gem 'omniauth-twitter'
+gem "omniauth-twitter2"
+gem "omniauth-rails_csrf_protection"
 # Use Sass to process CSS
 # gem "sassc-rails"
 

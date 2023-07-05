@@ -1,7 +1,7 @@
 # サービス名：おはログ！！🌞
 <img width="787" alt="スクリーンショット 2023-06-22 13 56 26" src="https://github.com/Nuno1122/portfolio/assets/110162517/2ba1aa85-3114-4d41-8e8f-0f551072fb9c">
 
-## [おはログ!!🌞](https://morning-activity.fly.dev/)
+## [おはログ!!🌞](https://oha-log.com/)
 
 
 ## ■ サービス概要 

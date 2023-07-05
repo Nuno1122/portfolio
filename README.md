@@ -73,7 +73,8 @@
 - rails-i18n
 - annotate
 - dotenv-rails
-- omniauth-twitter
+- omniauth-twitter2
+- omniauth-rails_csrf_protection
 - sorcery
 - byebug
 - Rspec(テスト)
@@ -88,7 +89,7 @@
 	- daisyUI
 
 ##### インフラ
-- Fly.io
+- Heroku
 - PostgreSQL（データベース）
 
 ##### ツール

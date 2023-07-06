@@ -10,6 +10,9 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag 'modal_controller', 'data-turbolinks-track': 'reload' %>
+
+    <%= display_meta_tags(default_meta_tags) %>
+
     <script src="<%= Rails.configuration.font_awesome_kit_url %>" crossorigin="anonymous"></script>
 
     <!-- Google tag (gtag.js) -->
@@ -22,11 +25,7 @@
       gtag('config', '<%= ENV['GOOGLE_ANALYTICS_MEASUREMENT_ID'] %>');
     </script>
 
-    <!-- Twitter Card tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="おはログ!!🌞">
-    <meta name="twitter:description" content="朝活開始時刻を手軽に記録し見える化することで、毎日の継続を楽しく支える朝活サポートサービスです">
-    <meta name="twitter:image" content="https://oha-log.com/images/morning_background.jpg">
+    
 
 
 

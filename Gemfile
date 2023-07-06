@@ -104,3 +104,5 @@ gem 'timecop', group: %i[development test]
 gem 'kaminari'
 
 gem 'simple_calendar', '~> 2.4', '>= 2.4.3'
+
+gem "meta-tags"

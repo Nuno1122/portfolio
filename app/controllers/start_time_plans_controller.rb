@@ -18,10 +18,22 @@ class StartTimePlansController < ApplicationController
 
   def update
     @start_time_plan = current_user.start_time_plan
+
+    # この月の開始時間を既に3回更新したかどうかを確認
+    if @start_time_plan.exceeded_monthly_updates?
+      flash[:error] = t('.update_limit')
+      redirect_to morning_activity_logs_path # あるいは適切なパス
+      return
+    end
+
     if @start_time_plan.update(start_time_plan_params)
-      redirect_to morning_activity_logs_path, success: t('.success')
+      # 月の更新回数を増やす
+      @start_time_plan.increment!(:monthly_updates_count)
+      
+      redirect_to morning_activity_logs_path,  success: t('.success')
     else
-      render :edit
+      flash.now[:error] = t('.fail')
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -68,6 +68,7 @@ ja:
     update: 
       success: 目標朝活開始時刻を更新しました
       fail: 目標朝活開始時刻更新に失敗しました
+      update_limit: 目標開始時刻の更新は月に3回までです。
   morning_activity_logs:
       create:
         success: 朝活を開始しました

@@ -35,15 +35,15 @@ RSpec.describe User, type: :model do
       expect(user.errors[:name]).to eq ['を入力してください']
     end
 
-    it 'nameが15文字の場合、有効' do
-      user = build(:user, name: 'a' * 15)
+    it 'nameが20文字の場合、有効' do
+      user = build(:user, name: 'a' * 20)
       expect(user).to be_valid
     end
 
-    it 'nameが16文字以上の場合、無効' do
-      user = build(:user, name: 'a' * 16)
+    it 'nameが21文字以上の場合、無効' do
+      user = build(:user, name: 'a' * 21)
       expect(user).to be_invalid
-      expect(user.errors[:name]).to eq ['は15文字以内で入力してください']
+      expect(user.errors[:name]).to eq ['は20文字以内で入力してください']
     end
 
     it 'emailがない場合、無効' do

@@ -1,17 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'Likes', type: :request do
-  describe 'GET /create' do
-    it 'returns http success' do
-      get '/likes/create'
-      expect(response).to have_http_status(:success)
+  describe 'POST /create' do
+    it 'returns http redirect' do
+      post '/posts/1/likes'
+      expect(response).to have_http_status(:redirect) # ここを変更
     end
   end
 
-  describe 'GET /destroy' do
-    it 'returns http success' do
-      get '/likes/destroy'
-      expect(response).to have_http_status(:success)
+  describe 'DELETE /destroy' do
+    it 'returns http redirect' do
+      delete '/posts/1/likes'
+      expect(response).to have_http_status(:redirect) # ここを変更
     end
   end
 end

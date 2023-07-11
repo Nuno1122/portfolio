@@ -78,6 +78,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker', '~> 3.1'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'webdrivers'
 end
 

@@ -22,8 +22,8 @@ class StartTimePlan < ApplicationRecord
   validate :start_time_within_allowed_range
   validates :start_time, presence: true
 
-  ALLOWED_START_HOUR = 4
-  ALLOWED_END_HOUR = 10
+  ALLOWED_START_HOUR = 4 # 許容開始時刻
+  ALLOWED_END_HOUR = 10 # 許容終了時刻
   MAX_UPDATES_PER_MONTH = 3 # 1ヶ月に更新できる回数
 
   def remaining_updates #残り更新回数

@@ -28,7 +28,9 @@
                   <% end %>
 
                   <div class="block rounded-lg flex items-center justify-center">
-                  <%= button_to "Twitterログイン", "/auth/twitter2", method: :post, data: { turbo: false }, class: "btn btn-primary twitter-login-button", onclick: "return confirm('Twitterアプリは立ち上がってますか？')" %>
+                  <%= button_to  "/auth/twitter2", method: :post, data: { turbo: false }, class: "btn btn-primary twitter-login-button", onclick: "return confirm('Xアプリは立ち上がってますか？')" do %>
+                    <i class="fa-brands fa-x-twitter"></i>ログイン
+                    <% end %>
                 </div>
                 
                 

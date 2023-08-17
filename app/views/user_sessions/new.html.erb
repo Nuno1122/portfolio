@@ -23,15 +23,13 @@
                     <%= f.button (t 'defaults.login'), class: "block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base" %>
                   </div>
                   <div class=" flex items-center justify-center">
-                  <span class=" bg-white px-4 text-sm text-gray-400">または</span>
+                    <span class=" bg-white px-4 text-sm text-gray-400">または</span>
                   </div>
-                  <% end %>
+             <% end %>
 
                   <div class="block rounded-lg flex items-center justify-center">
-                  <%= button_to  "/auth/twitter2", method: :post, data: { turbo: false }, class: "btn btn-primary twitter-login-button", onclick: "return confirm('Xアプリは立ち上がってますか？')" do %>
-                    <i class="fa-brands fa-x-twitter"></i>ログイン
-                    <% end %>
-                </div>
+                  <%= button_to "𝕏 ログイン", "/auth/twitter2", method: :post, data: { turbo: false }, class: "btn btn-primary twitter-login-button", onclick: "return confirm('𝕏 アプリは立ち上がってますか？')" %>
+                  </div>
                 
                 
 
@@ -41,13 +39,13 @@
                   <div class="flex items-center justify-center bg-gray-100 p-4">
                     <p class="text-center text-sm text-gray-500">アカウントをお持ちでない方<%= link_to (t 'user_sessions.new.register'), new_user_path, class: "text-indigo-500 transition duration-100 hover:text-indigo-600 active:text-indigo-700" %></p>
                   </div>
-              </div> 
+                </div> 
               <% else %>
-              <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <div class="p-4 md:p-8">
-                <h1 class="text-2xl font-bold text-white text-outline ">ログイン済みです</h1>
+                <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                  <div class="p-4 md:p-8">
+                  <h1 class="text-2xl font-bold text-white text-outline ">ログイン済みです</h1>
+                  </div>
                 </div>
-              </div>
 
               <% end %>               
         </div>

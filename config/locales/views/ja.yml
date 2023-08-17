@@ -11,7 +11,7 @@ ja:
     required: 必須
     guest_user: ゲストユーザー
     back: 戻る
-    post_to_x: 投稿
+    post_to_x: 𝕏 投稿
     close: 閉じる
     display: 表示
     terms_of_use: 利用規約
@@ -80,13 +80,13 @@ ja:
         title: 朝活メッセージ作成
   oauths:
     callback:
-      success: Xアカウントでのログインに成功しました
-      fail: Xアカウントでログインに失敗しました
+      success: 𝕏アカウントでのログインに成功しました
+      fail: 𝕏アカウントでログインに失敗しました
       denied:
-        success: Xアカウントでのアカウント作成に成功しました
+        success: 𝕏アカウントでのアカウント作成に成功しました
   sessions:
     create:
-      success: Xアカウントでのログインに成功しました
+      success: 𝕏アカウントでのログインに成功しました
   profiles:
     show:
       title: プロフィール

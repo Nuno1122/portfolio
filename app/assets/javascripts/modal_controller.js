@@ -9,7 +9,7 @@ document.addEventListener('turbo:load', () => {       // turbolinks:load イベ�
 
   const closeModalButton = document.getElementById('close-modal');  // モーダルの要素を取得
 
-  // クエリパラメーターから "achieved" を取得
+
   const params = new URLSearchParams(window.location.search); // URLSearchParams オブジェクトを生成
   const achieved = params.get('achieved');  // クエリパラメーター "achieved" の値を取得
 

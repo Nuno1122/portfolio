@@ -19,7 +19,7 @@ class StartTimePlansController < ApplicationController
   def update
     @start_time_plan = current_user.start_time_plan # 月の開始時間を更新するフォームを送信したときの処理
 
-    # この月の開始時間を既に3回更新したかどうかを確認
+    # この月の開始時間を既に3回更新したかどうかを確認（モデルにロジックの記述あり）
     if @start_time_plan.exceeded_monthly_updates? # 月の開始時間を更新するフォームを送信したときの処理
       flash[:error] = t('.update_limit')  # 月の開始時間を更新するフォームを送信したときの処理
       redirect_to morning_activity_logs_path # あるいは適切なパス

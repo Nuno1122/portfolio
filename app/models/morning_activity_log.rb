@@ -75,7 +75,7 @@ class MorningActivityLog < ApplicationRecord
         if morning_activity_log.achieved? # 達成された場合
           current_monthly_achievement(user).increment_achieved_count
           achieved_count = current_monthly_achievement(user).achieved_count
-          redirect_params = { achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: }
+          redirect_params = { achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: } #previous_achieved_count:には前回までの達成回数を、achieved_count:には今回の達成回数を設定します。
         else
           redirect_params = { achieved: morning_activity_log.achieved? }
         end

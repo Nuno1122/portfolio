@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy!
     redirect_to @comment.post, success: t('.success')
   end
 

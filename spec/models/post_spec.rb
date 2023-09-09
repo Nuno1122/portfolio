@@ -24,7 +24,7 @@ RSpec.describe Post, type: :model do
 
   # アソシエーションに関するテスト
   describe "関連付け" do
-    it { should belongs_to(:user) } # userに対するbelongs_toの関連付けがあることをテスト
+    it { should belong_to(:user) } # userに対するbelongs_toの関連付けがあることをテスト
     it { should have_many(:likes).dependent(:destroy) } # likesに対するhas_manyの関連付けがあり、親オブジェクトが削除されたら子オブジェクトも削除されることをテスト
     it { should have_many(:comments).dependent(:destroy) } # commentsに対するhas_manyの関連付けがあり、親オブジェクトが削除されたら子オブジェクトも削除されることをテスト
   end

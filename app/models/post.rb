@@ -24,7 +24,7 @@ class Post < ApplicationRecord
 
   validates :content, presence: true  #空白はエラー
   MAX_CONTENT_LENGTH = 230  #文字数上限
-  validate :content_length #バリデーション
+  validate :content_length, unless: -> { content.nil? } #文字数制限 バリデーション
 
   def likes_count #いいね数
     likes.count #いいねの数
@@ -33,7 +33,6 @@ class Post < ApplicationRecord
   private
 
   def content_length #文字数制限
-    return 0 if content.nil?
     count = content.chars.sum { |c| c.ascii_only? ? 1 : 2 } #半角文字は1文字、全角文字は2文字としてカウント
     return unless count > MAX_CONTENT_LENGTH #文字数が上限を超えていたらエラー
 

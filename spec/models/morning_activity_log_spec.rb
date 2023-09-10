@@ -23,6 +23,7 @@ require 'rails_helper'
 
 RSpec.describe MorningActivityLog, type: :model do
   let(:user) { create(:user) }
+  let!(:monthly_achievement) { create(:monthly_achievement, user: user, month: Time.current.month, year: Time.current.year) }
   let(:start_time_plan) { create(:start_time_plan) }
   let(:morning_activity_log) { create(:morning_activity_log, user: user, start_time_plan: start_time_plan) }
 
@@ -63,14 +64,14 @@ RSpec.describe MorningActivityLog, type: :model do
 
   describe "朝活を許可する時間帯かどうかを判断するメソッド(.is_morning_activity_not_allowed?)" do
     context "許可された開始時刻（ALLOWED_START_HOUR）より前の場合の挙動をテスト" do
-      it "許可された開始時刻より前（例：2:59）に.is_morning_activity_not_allowed?を呼び出した場合、このメソッドがtrueを返すか検証(returns true)" do
+      it "許可された開始時刻より前（例 2:59）に.is_morning_activity_not_allowed?を呼び出した場合、このメソッドがtrueを返すか検証(returns true)" do
         allow(Time).to receive(:current).and_return(Time.new(2021, 9, 1, 2, 30))
         expect(MorningActivityLog.is_morning_activity_not_allowed?(user)).to be_truthy
       end
     end
 
     context "許可された開始時刻（ALLOWED_START_HOUR）より後の場合の挙動をテスト" do
-      it "許可された開始時刻より後（例：4:01）に.is_morning_activity_not_allowed?を呼び出した場合、このメソッドがfalseを返すか検証(returns false)" do
+      it "許可された開始時刻より後（例 4:01）に.is_morning_activity_not_allowed?を呼び出した場合、このメソッドがfalseを返すか検証(returns false)" do
         allow(Time).to receive(:current).and_return(Time.new(2021, 9, 1, 4, 01))
         expect(MorningActivityLog.is_morning_activity_not_allowed?(user)).to be_falsy
       end

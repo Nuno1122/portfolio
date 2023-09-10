@@ -44,7 +44,6 @@ class MorningActivityLog < ApplicationRecord
 
   # ユーザーの月間達成回数を増やすメソッドです。
   def self.increment_achieved_count(user)
-    return 0 if achieved_count.nil?
     current_month = Time.current.month # 現在の月を取得
     # 現在の月に対応する月間達成情報を取得し、なければ作成します。
     current_monthly_achievement = user.monthly_achievements.find_or_create_by(month: current_month) do |achievement| # 月間達成情報がなければ作成

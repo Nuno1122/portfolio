@@ -24,7 +24,7 @@ require 'rails_helper'
 RSpec.describe MorningActivityLog, type: :model do
   let(:user) { create(:user) }
   let!(:monthly_achievement) { create(:monthly_achievement, user: user, month: Time.current.month, year: Time.current.year) }
-  let(:start_time_plan) { create(:start_time_plan) }
+  let(:start_time_plan) { create(:start_time_plan, user: user) }
   let(:morning_activity_log) { create(:morning_activity_log, user: user, start_time_plan: start_time_plan) }
 
   describe "Associations" do
@@ -62,7 +62,7 @@ RSpec.describe MorningActivityLog, type: :model do
     end
   end
 
-  describe "朝活を許可する時間帯かどうかを判断するメソッド(.is_morning_activity_not_allowed?)" do
+  describe "朝活を許可する時間帯かどうかを判断するメソッド(.is_morning_activity_not_allowed?)に関するテスト" do
     context "許可された開始時刻（ALLOWED_START_HOUR）より前の場合の挙動をテスト" do
       it "許可された開始時刻より前（例 2:59）に.is_morning_activity_not_allowed?を呼び出した場合、このメソッドがtrueを返すか検証(returns true)" do
         allow(Time).to receive(:current).and_return(Time.new(2021, 9, 1, 2, 30))
@@ -78,8 +78,49 @@ RSpec.describe MorningActivityLog, type: :model do
     end
   end
 
-  describe ".create_log_and_check_achievement" do
-    # Add your test cases here
+  describe "朝活ログを作成し、達成状況をチェックするメソッド(.create_log_and_check_achievement)に関するテスト" do
+    context "「ログが正常に作成された場合」のテスト" do
+      it "ログが正常に作成された場合「メソッドが true と正確なリダイレクトパラメータを返すかどうか」をテスト" do
+        result, redirect_params = MorningActivityLog.create_log_and_check_achievement(user, start_time_plan.id)
+        expect(result).to eq(true)
+        expect(redirect_params).to include(:achieved)
+      end
+
+      context "ログが達成された場合" do
+        before do
+          allow_any_instance_of(MorningActivityLog).to receive(:achieved?).and_return(true)
+        end
+
+        it "achieved_count（達成回数または達成カウント）を増加させる" do
+          expect { MorningActivityLog.create_log_and_check_achievement(user, start_time_plan.id) }
+            .to change { MorningActivityLog.current_monthly_achievement(user).achieved_count }.by(1)
+
+        end
+      end
+
+      context "ログが達成されていない場合" do
+        before do
+          allow_any_instance_of(MorningActivityLog).to receive(:achieved?).and_return(false)
+        end
+
+        it "achieved_count（達成カウント）は増加しない" do
+          expect { MorningActivityLog.create_log_and_check_achievement(user, start_time_plan.id) }
+            .not_to change { MorningActivityLog.current_monthly_achievement(user).achieved_count }
+        end
+      end
+    end
+
+    context "ログの作成に失敗した場合" do
+      before do
+        allow_any_instance_of(MorningActivityLog).to receive(:save).and_return(false)
+      end
+
+      it "falseとnilを返す" do
+        result, redirect_params = MorningActivityLog.create_log_and_check_achievement(user, start_time_plan.id)
+        expect(result).to eq(false)
+        expect(redirect_params).to eq(nil)
+      end
+    end
   end
 
   describe "#achieved?" do

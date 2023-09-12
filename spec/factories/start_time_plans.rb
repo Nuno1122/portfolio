@@ -19,7 +19,7 @@
 #
 FactoryBot.define do
   factory :start_time_plan do
-    user { nil }
-    start_time { '2023-04-09 17:24:50' }
+    association :user
+    start_time { Time.current.change(hour: 5, minute: 0, second: 0) }
   end
 end

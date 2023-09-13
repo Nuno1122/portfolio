@@ -27,7 +27,7 @@ RSpec.describe MorningActivityLog, type: :model do
   let(:start_time_plan) { create(:start_time_plan, user: user) }
   let(:morning_activity_log) { create(:morning_activity_log, user: user, start_time_plan: start_time_plan) }
 
-  describe "Associations" do
+  describe "関連付け（アソシエーション）に関するテスト" do
     it { should belong_to(:user) }
     it { should belong_to(:start_time_plan) }
   end
@@ -123,23 +123,34 @@ RSpec.describe MorningActivityLog, type: :model do
     end
   end
 
-  describe "#achieved?" do
-    context "when the log is within the allowed time" do
-      it "returns true" do
-        # Your test logic here
+  describe "朝活が達成されたかどうかを判断するメソッド(achieved?)に関するテスト" do
+    context "ログが許可された時間内にある場合" do
+      it "目標開始時刻 - 1分前に打刻した場合、trueを返す" do
+       #許可された時間範囲を設定
+        allowed_time = start_time_plan.start_time - 1.minute
+        morning_activity_log.started_time = allowed_time
+
+        expect(morning_activity_log.achieved?).to eq(true)
       end
+
+      it "目標開始時刻ピッタリに打刻した場合、trueを返す" do
+        #許可された時間範囲を設定
+        allowed_time = start_time_plan.start_time
+        morning_activity_log.started_time = allowed_time
+
+        expect(morning_activity_log.achieved?).to eq(true)
+      end
+
     end
 
-    context "when the log is outside the allowed time" do
-      it "returns false" do
-        # Your test logic here
-      end
-    end
-  end
+    context "ログが許可された時間外にある場合" do
+      it "目標開始時刻 + 1分後に打刻した場合、falseを返す" do
+        # 許可されていない時間範囲を設定
+        not_allowed_time = start_time_plan.start_time + 1.minute
+        morning_activity_log.started_time = not_allowed_time
 
-  describe "#initialize_new_month_if_needed" do
-    it "initializes a new month if needed" do
-      # Your test logic here
+        expect(morning_activity_log.achieved?).to eq(false)
+      end
     end
   end
 end

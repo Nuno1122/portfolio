@@ -21,5 +21,10 @@
 require 'rails_helper'
 
 RSpec.describe Authentication, type: :model do
- 
+  describe 'アソシエーションのテスト' do
+    it 'Userモデルと関連を持っている' do
+      expect(Authentication.reflect_on_association(:user).macro).to eq :belongs_to
+    end
+  end
 end
+

@@ -25,17 +25,17 @@ class MorningActivityLog < ApplicationRecord
   belongs_to :start_time_plan
 
   # 定数の設定
-  ALLOWED_START_HOUR = 3  # 許容開始時刻
-  ALLOWED_START_MIN = 0  # 許容開始分
+  ALLOWED_START_HOUR = 3 # 許容開始時刻
+  ALLOWED_START_MIN = 0 # 許容開始分
   ALLOWED_START_SEC = 0 # 許容開始秒
   ALLOWED_END_OFFSET = 59.seconds # 許容終了時刻のオフセット
 
   # 以下は、達成回数に関する定数を設定。
-  DEFAULT_ACHIEVED_COUNT = 0  # デフォルトの達成回数
+  DEFAULT_ACHIEVED_COUNT = 0 # デフォルトの達成回数
   DECREMENT_COUNT = 1 # 達成回数を減らす数
 
   # 新しい月の初期化が必要かどうかを確認し、必要であれば実行するためのコールバックメソッドを設定。
-  after_create :initialize_new_month_if_needed  # 朝活ログが作成された後に実行される。
+  after_create :initialize_new_month_if_needed # 朝活ログが作成された後に実行される。
 
   # 今月の達成状況を取得するメソッド。(クラスメソッド)
   def self.current_monthly_achievement(user)
@@ -47,7 +47,7 @@ class MorningActivityLog < ApplicationRecord
     current_month = Time.current.month # 現在の月を取得
     # 現在の月に対応する月間達成情報を取得し、なければ作成します。
     current_monthly_achievement = user.monthly_achievements.find_or_create_by(month: current_month) do |achievement| # 月間達成情報がなければ作成
-      achievement.year = Time.current.year  # 月間達成情報の年を設定
+      achievement.year = Time.current.year # 月間達成情報の年を設定
       achievement.achieved_count = DEFAULT_ACHIEVED_COUNT # 月間達成情報の達成回数を設定
     end
     current_monthly_achievement.increment!(:achieved_count) # 達成回数を1増やします。
@@ -75,7 +75,7 @@ class MorningActivityLog < ApplicationRecord
         if morning_activity_log.achieved? # 達成された場合
           current_monthly_achievement(user).increment_achieved_count
           achieved_count = current_monthly_achievement(user).achieved_count
-          redirect_params = { achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: } #previous_achieved_count:には前回までの達成回数を、achieved_count:には今回の達成回数を設定します。
+          redirect_params = { achieved: 'true', previous_achieved_count: achieved_count - DECREMENT_COUNT, achieved_count: } # previous_achieved_count:には前回までの達成回数を、achieved_count:には今回の達成回数を設定します。
         else
           redirect_params = { achieved: morning_activity_log.achieved? }
         end

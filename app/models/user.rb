@@ -32,23 +32,24 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :post # ユーザーが削除されたら、そのユーザーのいいねした投稿も削除される
   has_many :comments, dependent: :destroy # ユーザーが削除されたら、そのユーザーのコメントも削除される
 
-  validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }   # パスワードが6文字以上であること
-  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }      # パスワードと確認用パスワードが一致すること
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }  # 確認用パスワードが入力されていること
+  validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] } # パスワードが6文字以上であること
+  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] } # パスワードと確認用パスワードが一致すること
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] } # 確認用パスワードが入力されていること
 
   validates :name, presence: true, length: { maximum: 20 } # ユーザー名が20文字以下であること
-  validates :email, presence: true, uniqueness: true   # メールアドレスが入力されていること
+  validates :email, presence: true, uniqueness: true # メールアドレスが入力されていること
 
-  def self.find_or_create_from_auth(auth) # ユーザーが存在する場合はそのユーザーを返し、存在しない場合は新しくユーザーを作成する
+  # ユーザーが存在する場合はそのユーザーを返し、存在しない場合は新しくユーザーを作成するメソッド
+  def self.find_or_create_from_auth(auth)
     provider = auth[:provider] # providerはSNSの種類を表す(今回はtwitter)
     uid = auth[:uid] # uidはSNSのユーザーを識別するID
     name = auth[:info][:name] # nameはSNSのユーザー名
-    image_url = auth[:info][:image]  # image_urlはSNSのユーザーのプロフィール画像のURL
+    image_url = auth[:info][:image] # image_urlはSNSのユーザーのプロフィール画像のURL
     introduction = auth[:info][:introduction] # introductionはSNSのユーザーの自己紹介文
   
 
-    #User.find_or_create_by!メソッドを使って、指定したemailが既に存在する場合はそのユーザーを取得し、存在しない場合は新たにユーザーを作成。
-    user = User.find_or_create_by!(email: "#{provider}-#{uid}@example.com") do |user| #ここでのemailはprovider-uid@example.comの形式に設定。ブロック内で新たに作成するユーザーの属性を設定
+    # User.find_or_create_by!メソッドを使って、指定したemailが既に存在する場合はそのユーザーを取得し、存在しない場合は新たにユーザーを作成。
+    user = User.find_or_create_by!(email: "#{provider}-#{uid}@example.com") do |user| # ここでのemailはprovider-uid@example.comの形式に設定。ブロック内で新たに作成するユーザーの属性を設定
       user.name = name # ユーザーの属性を設定
       user.image_url = image_url # ユーザーの属性を設定
       user.introduction = introduction # ユーザーの属性を設定
@@ -61,19 +62,23 @@ class User < ApplicationRecord
     user # ユーザーを返す
   end
 
-  def own?(object) # ユーザーが投稿やコメントの作成者であるかどうかを判定するメソッド
+  # ユーザーが投稿やコメントの作成者であるかどうかを判定するメソッド
+  def own?(object)
     id == object.user_id # ユーザーのidと投稿やコメントのuser_idが一致するかどうかを判定
   end
 
-  def like(post) # いいねするメソッド
+  # いいねするメソッド
+  def like(post)
     liked_posts << post # いいねした投稿をliked_postsに追加
   end
 
-  def unlike(post) # いいねを解除するメソッド
+  # いいねを解除するメソッド
+  def unlike(post)
     liked_posts.destroy(post) # いいねした投稿をliked_postsから削除
   end
 
-  def like?(post) # いいねしているかどうかを判定するメソッド
+  # いいねしているかどうかを判定するメソッド
+  def like?(post)
     liked_posts.include?(post) # いいねした投稿に引数で渡された投稿が含まれているかどうかを判定
   end
 

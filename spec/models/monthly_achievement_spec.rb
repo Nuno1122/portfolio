@@ -22,6 +22,9 @@ require 'rails_helper'
 
 RSpec.describe MonthlyAchievement, type: :model do
   let(:user) { create(:user) }
+  let!(:user1) { create(:user) }
+  let!(:user2) { create(:user) }
+  let!(:user3) { create(:user) }
   let(:current_year) { Time.current.year }
   let(:current_month) { Time.current.month }
   let(:achieved_count) { 5 }
@@ -43,10 +46,10 @@ RSpec.describe MonthlyAchievement, type: :model do
 
   describe '新しい月の達成回数（achieved_count）が0で初期化されるか確認のテスト（.initialize_new_month)' do
     it '現在の月に対してユーザーの新しいMonthlyAchievementレコードを作成する' do
-      expect {
+      expect do
         MonthlyAchievement.initialize_new_month(user)
-      }.to change { MonthlyAchievement.count }.by(1)
-      
+      end.to change { MonthlyAchievement.count }.by(1)
+
       monthly_achievement = MonthlyAchievement.last
       expect(monthly_achievement.user).to eq(user)
       expect(monthly_achievement.year).to eq(current_year)
@@ -57,7 +60,7 @@ RSpec.describe MonthlyAchievement, type: :model do
 
   context '該当するMonthlyAchievementレコードが存在する場合' do
     it 'achieved_countを返す' do
-      create(:monthly_achievement, user: user, year: current_year, month: current_month, achieved_count: achieved_count)
+      create(:monthly_achievement, user:, year: current_year, month: current_month, achieved_count:)
       expect(MonthlyAchievement.achieved_count_or_default(user.id, current_year, current_month)).to eq(achieved_count)
     end
   end
@@ -69,14 +72,13 @@ RSpec.describe MonthlyAchievement, type: :model do
   end
 
   describe 'achieved_count に nil が入らないようになっているか確認(.increment_achieved_count)メソッドのテスト' do
-
-  context 'achieved_countがnilの場合' do
-    it 'achieved_countが1になる' do
-      monthly_achievement.achieved_count = nil
-      monthly_achievement.increment_achieved_count
-      expect(monthly_achievement.achieved_count).to eq(1)
+    context 'achieved_countがnilの場合' do
+      it 'achieved_countが1になる' do
+        monthly_achievement.achieved_count = nil
+        monthly_achievement.increment_achieved_count
+        expect(monthly_achievement.achieved_count).to eq(1)
+      end
     end
-  end
 
   context 'achieved_countが数値の場合' do
     it 'achieved_countが1増加する' do
@@ -86,13 +88,9 @@ RSpec.describe MonthlyAchievement, type: :model do
       expect(monthly_achievement.achieved_count).to eq(initial_count + 1)
     end
   end
-end
-  
-describe 'ランキングに関するテスト' do
-  let!(:user1) { create(:user) }
-  let!(:user2) { create(:user) }
-  let!(:user3) { create(:user) }
+  end
 
+describe 'ランキングに関するテスト' do
   before do
     create(:monthly_achievement, user: user1, achieved_count: 5)
     create(:monthly_achievement, user: user1, achieved_count: 10)
@@ -114,10 +112,6 @@ describe 'ランキングに関するテスト' do
 end
 
   describe '月間達成回数のランキングを取得するメソッドに関するテスト' do
-    let!(:user1) { create(:user) }
-    let!(:user2) { create(:user) }
-    let!(:user3) { create(:user) }
-
     let!(:achievement1) { create(:monthly_achievement, user: user1, year: 2023, month: 4, achieved_count: 5) }
     let!(:achievement2) { create(:monthly_achievement, user: user1, year: 2023, month: 4, achieved_count: 10) }
     let!(:achievement3) { create(:monthly_achievement, user: user2, year: 2023, month: 4, achieved_count: 9) }
@@ -134,5 +128,4 @@ end
       )
     end
   end
-
 end

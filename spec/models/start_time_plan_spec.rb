@@ -34,14 +34,14 @@ RSpec.describe StartTimePlan, type: :model do
   describe 'バリデーションのテスト' do
     context 'start_timeが存在する場合' do
       it '有効である' do
-        start_time_plan = build(:start_time_plan, user: user, start_time: valid_start_time)
+        start_time_plan = build(:start_time_plan, user:, start_time: valid_start_time)
         expect(start_time_plan).to be_valid
       end
     end
 
     context 'start_timeが存在しない場合' do
       it '無効である' do
-        start_time_plan = build(:start_time_plan, user: user, start_time: nil)
+        start_time_plan = build(:start_time_plan, user:, start_time: nil)
         expect(start_time_plan).not_to be_valid
       end
     end
@@ -50,14 +50,14 @@ RSpec.describe StartTimePlan, type: :model do
   describe 'カスタムバリデーションのテスト' do
     context 'start_timeが許容時間内の場合' do
       it '有効である' do
-        start_time_plan = build(:start_time_plan, user: user, start_time: valid_start_time)
+        start_time_plan = build(:start_time_plan, user:, start_time: valid_start_time)
         expect(start_time_plan).to be_valid
       end
     end
 
     context 'start_timeが許容時間外の場合' do
       it '無効である' do
-        start_time_plan = build(:start_time_plan, user: user, start_time: invalid_start_time)
+        start_time_plan = build(:start_time_plan, user:, start_time: invalid_start_time)
         expect(start_time_plan).not_to be_valid
       end
     end
@@ -68,7 +68,7 @@ RSpec.describe StartTimePlan, type: :model do
       context '月の更新回数が0の場合' do
         it '残りの更新回数はMAX_UPDATES_PER_MONTHと同じである' do
           allow_any_instance_of(StartTimePlan).to receive(:monthly_updates_count).and_return(0)
-          start_time_plan = build(:start_time_plan, user: user)
+          start_time_plan = build(:start_time_plan, user:)
           expect(start_time_plan.remaining_updates).to eq StartTimePlan::MAX_UPDATES_PER_MONTH
         end
       end
@@ -76,7 +76,7 @@ RSpec.describe StartTimePlan, type: :model do
       context '月の更新回数が1の場合' do
         it '残りの更新回数はMAX_UPDATES_PER_MONTH - 1である' do
           allow_any_instance_of(StartTimePlan).to receive(:monthly_updates_count).and_return(1)
-          start_time_plan = build(:start_time_plan, user: user)
+          start_time_plan = build(:start_time_plan, user:)
           expect(start_time_plan.remaining_updates).to eq(StartTimePlan::MAX_UPDATES_PER_MONTH - 1)
         end
       end
@@ -84,7 +84,7 @@ RSpec.describe StartTimePlan, type: :model do
       context '月の更新回数がMAX_UPDATES_PER_MONTHと同じ場合' do
         it '残りの更新回数は0である' do
           allow_any_instance_of(StartTimePlan).to receive(:monthly_updates_count).and_return(StartTimePlan::MAX_UPDATES_PER_MONTH)
-          start_time_plan = build(:start_time_plan, user: user)
+          start_time_plan = build(:start_time_plan, user:)
           expect(start_time_plan.remaining_updates).to eq(0)
         end
       end
@@ -96,7 +96,7 @@ RSpec.describe StartTimePlan, type: :model do
       context '月の更新回数がMAX_UPDATES_PER_MONTH未満の場合' do
         it 'falseを返す' do
           allow_any_instance_of(StartTimePlan).to receive(:monthly_updates_count).and_return(StartTimePlan::MAX_UPDATES_PER_MONTH - 1)
-          start_time_plan = build(:start_time_plan, user: user)
+          start_time_plan = build(:start_time_plan, user:)
           expect(start_time_plan.exceeded_monthly_updates?).to be_falsey
         end
       end
@@ -104,7 +104,7 @@ RSpec.describe StartTimePlan, type: :model do
       context '月の更新回数がMAX_UPDATES_PER_MONTHと同じ場合' do
         it 'trueを返す' do
           allow_any_instance_of(StartTimePlan).to receive(:monthly_updates_count).and_return(StartTimePlan::MAX_UPDATES_PER_MONTH)
-          start_time_plan = build(:start_time_plan, user: user)
+          start_time_plan = build(:start_time_plan, user:)
           expect(start_time_plan.exceeded_monthly_updates?).to be_truthy
         end
       end
@@ -112,13 +112,10 @@ RSpec.describe StartTimePlan, type: :model do
       context '月の更新回数がMAX_UPDATES_PER_MONTHを超えている場合' do
         it 'trueを返す' do
           allow_any_instance_of(StartTimePlan).to receive(:monthly_updates_count).and_return(StartTimePlan::MAX_UPDATES_PER_MONTH + 1)
-          start_time_plan = build(:start_time_plan, user: user)
+          start_time_plan = build(:start_time_plan, user:)
           expect(start_time_plan.exceeded_monthly_updates?).to be_truthy
         end
       end
     end
   end
-
 end
-
-

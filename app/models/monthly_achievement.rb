@@ -34,7 +34,6 @@ class MonthlyAchievement < ApplicationRecord
     monthly_achievement = find_by(user_id: user_id, year: year, month: month)
     monthly_achievement&.achieved_count || DEFAULT_ACHIEVED_COUNT
   end
-  
 
   # achieved_count に nil が入らないように設定。値が無い場合、to_i メソッドで 0 を返す。加算時には +1 される。
   def increment_achieved_count

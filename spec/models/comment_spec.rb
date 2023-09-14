@@ -22,9 +22,9 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-	let(:user) { create(:user) }
+  let(:user) { create(:user) }
   let(:post) { create(:post) }
-  let(:comment) { build(:comment, user: user, post: post) }
+  let(:comment) { build(:comment, user:, post:) }
 
   describe 'アソシエーションのテスト' do
     it 'Userモデルと関連を持っている' do

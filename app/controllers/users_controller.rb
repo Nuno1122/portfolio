@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     @user = User.new  # ユーザー登録ページ
   end
 
-  def create  # ユーザー登録アクション
-    @user = User.new(user_params)  # ユーザー登録フォームを送信したときの処理
+  def create
+    @user = User.new(user_params) # ユーザー登録フォームを送信したときの処理
     if @user.save
       auto_login(@user)
       redirect_to morning_activity_logs_path, success: t('.success')
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params # ユーザー登録フォームを送信したときの処理
+  def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

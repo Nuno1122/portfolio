@@ -1,9 +1,9 @@
 class StartTimePlansController < ApplicationController
-  def new # 月の開始時間を設定するページ
+  def new
     @start_time_plan = current_user.create_start_time_plan # 月の開始時間を設定するフォームを表示するページ
   end
 
-  def create  # 月の開始時間を設定するアクション  
+  def create
     @start_time_plan = current_user.build_start_time_plan(start_time_plan_params)  # 月の開始時間を設定するフォームを送信したときの処理
     if @start_time_plan.save  # 月の開始時間を設定するフォームを送信したときの処理
       redirect_to morning_activity_logs_path, success: t('.success')  # 月の開始時間を設定するフォームを送信したときの処理

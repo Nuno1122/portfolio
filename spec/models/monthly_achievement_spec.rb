@@ -122,7 +122,7 @@ end
     let!(:achievement2) { create(:monthly_achievement, user: user1, year: 2023, month: 4, achieved_count: 10) }
     let!(:achievement3) { create(:monthly_achievement, user: user2, year: 2023, month: 4, achieved_count: 9) }
     let!(:achievement4) { create(:monthly_achievement, user: user3, year: 2023, month: 4, achieved_count: 16) }
-    let!(:achievement5) { create(:monthly_achievement, user: user3, year: 2023, month: 5, achieved_count: 10) } # Different month, should not be included
+    let!(:achievement5) { create(:monthly_achievement, user: user3, year: 2023, month: 5, achieved_count: 10) }
 
     it '指定された年と月に基づいて、achieved_counts（達成カウント）の合計に基づいたユーザーランキングを降順で返すか確認するテスト' do
       expect(MonthlyAchievement.achievements_ranking(2023, 4)).to eq(

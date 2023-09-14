@@ -21,8 +21,10 @@
 #
 FactoryBot.define do
   factory :morning_activity_log do
-    user { nil }
-    start_time_plan { nil }
-    started_time { '2023-04-10 12:42:18' }
+    association :user # userモデルとのアソシエーション
+    association :start_time_plan # start_time_planモデルとのアソシエーション
+
+    started_time { Time.current.change(hour: MorningActivityLog::ALLOWED_START_HOUR, min: MorningActivityLog::ALLOWED_START_MIN, sec: MorningActivityLog::ALLOWED_START_SEC) }
+    # 任意の属性が必要な場合は、以下に追加
   end
 end

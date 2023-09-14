@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]# このコントローラのshow, edit, update, destroyアクションでは、set_postメソッドを実行する
   skip_before_action :require_login, only: [:index, :show]# このコントローラのindexアクションでは、ログイン要求をスキップし、ログインしていないユーザーでもランキングページを閲覧できるようにする
   def index
     @posts = Post.includes(user: %i[start_time_plan morning_activity_logs]).order(created_at: :desc).page(params[:page])

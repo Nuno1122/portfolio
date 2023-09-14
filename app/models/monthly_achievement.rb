@@ -31,7 +31,7 @@ class MonthlyAchievement < ApplicationRecord
 
   # 翌月の朝活達成カウント(achieved_count)の値がnil?を返さないようにするために、nilだった場合、デフォルト値０を設定するメソッド
   def self.achieved_count_or_default(user_id, year, month)
-    monthly_achievement = find_by(user_id:, year:, month:)
+    monthly_achievement = find_by(user_id: user_id, year: year, month: month)
     monthly_achievement&.achieved_count || DEFAULT_ACHIEVED_COUNT
   end
 
@@ -41,11 +41,12 @@ class MonthlyAchievement < ApplicationRecord
       save!
   end
 
-  # ユーザーごとの達成数の合計を取得し、達成数の降順でソートした結果を返すメソッド
+  # achieved_count に nil が入らないように設定。値が無い場合、to_i メソッドで 0 を返す。減算時には -1 される。
   def self.ranking
     group(:user_id).sum(:achieved_count).sort_by { |_, achieved_count| achieved_count }.reverse
   end
 
+  # 月間達成回数のランキングを取得するメソッド
   def self.achievements_ranking(year, month)
     where(year: year, month: month)
       .group(:user_id)

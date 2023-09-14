@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   skip_before_action :require_login
 
   def new
-    @user = User.new
+    @user = User.new  # ユーザー登録ページ
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params) # ユーザー登録フォームを送信したときの処理
     if @user.save
       auto_login(@user)
       redirect_to morning_activity_logs_path, success: t('.success')

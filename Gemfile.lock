@@ -317,6 +317,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     simple_calendar (2.4.3)
       rails (>= 3.0)
     snaky_hash (2.0.1)
@@ -406,6 +408,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   sassc-rails
+  shoulda-matchers
   simple_calendar (~> 2.4, >= 2.4.3)
   sorcery (~> 0.16.4)
   sprockets-rails

@@ -1,46 +1,45 @@
-const MODAL_DISPLAY_TRUE = 'true';
-const HIDDEN_CLASS = 'hidden';
+const MODAL_DISPLAY_TRUE = 'true';  // クエリパラメーター "achieved" の値
+const HIDDEN_CLASS = 'hidden';    // モーダルを非表示にするためのクラス
 
-document.addEventListener('turbo:load', () => {
-  const modal = document.getElementById('modal');
-  const modalBackdrop = document.getElementById('modal-backdrop');
+document.addEventListener('turbo:load', () => {       // turbolinks:load イベントリスナー
+  const modal = document.getElementById('modal');     // モーダルの要素を取得
+  const modalBackdrop = document.getElementById('modal-backdrop');    // モーダルの要素を取得
   // If modal does not exist, stop execution.
-  if (!modal || !modalBackdrop) return;
+  if (!modal || !modalBackdrop) return;            // モーダルが存在しない場合は処理を中断
 
-  const closeModalButton = document.getElementById('close-modal');
+  const closeModalButton = document.getElementById('close-modal');  // モーダルの要素を取得
 
-  // クエリパラメーターから "achieved" を取得
-  const params = new URLSearchParams(window.location.search);
-  const achieved = params.get('achieved');
 
-  const achievedCount = parseInt(modal.dataset.achievedCount);
-  const previousAchievedCount = parseInt(modal.dataset.previousAchievedCount);
-  const currentMonth = new Date().getMonth() + 1;
+  const params = new URLSearchParams(window.location.search); // URLSearchParams オブジェクトを生成
+  const achieved = params.get('achieved');  // クエリパラメーター "achieved" の値を取得
 
-  const firstTimeMessage = 'おめでとうございます！今月初めての朝活成功をしました！これからも継続して朝活を行い、目標達成に向けて一緒に頑張りましょう！素晴らしいスタートですね！';
+  const achievedCount = parseInt(modal.dataset.achievedCount);  // 朝活達成日数を取得
+  const previousAchievedCount = parseInt(modal.dataset.previousAchievedCount);    // 前回の朝活達成日数を取得
+  const currentMonth = new Date().getMonth() + 1; // 今月の月を取得
 
-  // ランダムなメッセージリスト
-  const randomMessages = generateRandomMessages(currentMonth, achievedCount);
+  const firstTimeMessage = 'おめでとうございます！今月初めての朝活成功をしました！これからも継続して朝活を行い、目標達成に向けて一緒に頑張りましょう！素晴らしいスタートですね！';  
+
+  const randomMessages = generateRandomMessages(currentMonth, achievedCount); // ランダムなメッセージリストを生成
 
   // 朝活達成時の処理
 if (achieved === MODAL_DISPLAY_TRUE) {
-  displayAchievementMessage(modal, previousAchievedCount, achievedCount, firstTimeMessage, randomMessages);
-  modalBackdrop.classList.remove(HIDDEN_CLASS);
-  modal.classList.add('fade-in');
+  displayAchievementMessage(modal, previousAchievedCount, achievedCount, firstTimeMessage, randomMessages); // 朝活達成時のメッセージを表示
+  modalBackdrop.classList.remove(HIDDEN_CLASS); // モーダルの背景を表示
+  modal.classList.add('fade-in'); // モーダルをフェードイン
 }
 
 // モーダルを閉じるイベントリスナー
-closeModalButton.addEventListener('click', () => {
-  closeModalAndUpdateUrl(modal, params);
-  modalBackdrop.classList.add(HIDDEN_CLASS);
-  modal.classList.remove('fade-in');
+closeModalButton.addEventListener('click', () => {  // モーダルの閉じるボタンをクリックした時
+  closeModalAndUpdateUrl(modal, params);  // モーダルを閉じてURLを更新
+  modalBackdrop.classList.add(HIDDEN_CLASS);  // モーダルの背景を非表示
+  modal.classList.remove('fade-in');  // モーダルをフェードアウト
 });
 
 });
 
 
 // ランダムなメッセージリストを生成する関数
-function generateRandomMessages(currentMonth, achievedCount) {
+function generateRandomMessages(currentMonth, achievedCount) {  
   
   // メッセージの定義
   const messages = [
@@ -112,23 +111,23 @@ function generateRandomMessages(currentMonth, achievedCount) {
 }
 
 // 朝活達成時のメッセージを表示する関数
-function displayAchievementMessage(modal, previousAchievedCount, achievedCount, firstTimeMessage, randomMessages) {
-  if (previousAchievedCount === 0 && achievedCount === 1) {
-    console.log('Displaying first time message');
-    document.getElementById("modal-content").innerHTML = firstTimeMessage;
+function displayAchievementMessage(modal, previousAchievedCount, achievedCount, firstTimeMessage, randomMessages) {   //朝活達成時のメッセージを表示する関数
+  if (previousAchievedCount === 0 && achievedCount === 1) { // 今月初めての朝活達成の場合
+    console.log('Displaying first time message');   // 今月初めての朝活達成のメッセージを表示
+    document.getElementById("modal-content").innerHTML = firstTimeMessage;  // 今月初めての朝活達成のメッセージを表示
   } else {
-    console.log('Displaying random message');
-    const randomIndex = Math.floor(Math.random() * randomMessages.length);
-    document.getElementById("modal-content").innerHTML = randomMessages[randomIndex];
+    console.log('Displaying random message'); // ランダムなメッセージを表示
+    const randomIndex = Math.floor(Math.random() * randomMessages.length);  // ランダムなインデックスを生成
+    document.getElementById("modal-content").innerHTML = randomMessages[randomIndex]; // ランダムなメッセージを表示
   }
-  modal.classList.remove(HIDDEN_CLASS);
+  modal.classList.remove(HIDDEN_CLASS); // モーダルを表示
 }
 
 // モーダルを閉じてURLを更新する関数
-function closeModalAndUpdateUrl(modal, params) {
-  modal.classList.add(HIDDEN_CLASS);
+function closeModalAndUpdateUrl(modal, params) {  // モーダルを閉じてURLを更新する関数
+  modal.classList.add(HIDDEN_CLASS);  // モーダルを非表示
 
   // クエリパラメーター "achieved" を削除し、ページ URL を更新
-  params.delete('achieved');
-  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+  params.delete('achieved');  // クエリパラメーター "achieved" を削除
+  window.history.replaceState({}, '', `${location.pathname}?${params}`);  // ページ URL を更新
 }

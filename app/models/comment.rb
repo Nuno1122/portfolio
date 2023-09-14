@@ -24,7 +24,7 @@ class Comment < ApplicationRecord
   belongs_to :post
   validates :content, presence: true
   MAX_CONTENT_LENGTH = 230
-  validate :content_length
+  validate :content_length, unless: -> { content.nil? } # 文字数制限 バリデーション
 
   private
 

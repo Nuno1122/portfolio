@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :monthly_achievement do
-    user { nil }
+    association :user
     year { 1 }
     month { 1 }
     achieved_count { 1 }

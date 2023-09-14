@@ -43,8 +43,9 @@
                     </div>
 
                     <div class="badge badge-outline flex space-x-2">
-                    <%= link_to t('defaults.post_to_twitter'), "https://twitter.com/intent/tweet?text=#{@post.content}%0A&hashtags=朝活,おはログ%0A#{'https://www.oha-log.com '}", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
-                    </div>
+                    <%= link_to t('defaults.post_to_x'), "https://twitter.com/intent/tweet?text=#{@post.content}%0A&hashtags=朝活,おはログ%0A#{'https://www.oha-log.com '}", title: 'Twitter', target: '_blank', class: 'twitter-button' %>
+                  </div>
+                  
                 </div>
             <% end %>
         

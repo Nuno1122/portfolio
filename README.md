@@ -67,6 +67,7 @@
 - sorcery
 - byebug
 - Rspec(テスト)
+- rails-controller-testing
 - RuboCop(リントチェック)
 - kaminari(ページネーション)
 - simple_calendar

@@ -74,6 +74,7 @@ group :development, :test do
   gem 'pry-byebug'
 
   # Test
+  gem 'rails-controller-testing'
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker', '~> 3.1'

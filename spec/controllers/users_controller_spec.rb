@@ -57,24 +57,22 @@ RSpec.describe UsersController, type: :controller do
           end
         end
       end
+    end
 
-      describe 'DELETE #destroy' do
-        let!(:user) { create(:user) }
-        it 'ユーザーが1件削除されること' do
-          expect do
-            delete :destroy, params: { id: user.id }
-          end.to change(User, :count).by(-1)
-        end
+    describe 'DELETE #destroy' do
+      let!(:user) { create(:user) }
+      it 'ユーザーが1件削除されること' do
+        expect { delete :destroy, params: { id: user.id } }.to change(User, :count).by(-1)
+      end
 
-        it 'ユーザー一覧ページ(users_url)にリダイレクトされること' do
-          delete :destroy, params: { id: user.id }
-          expect(response).to redirect_to(users_url)
-        end
+      it 'ユーザー一覧ページ(users_url)にリダイレクトされること' do
+        delete :destroy, params: { id: user.id }
+        expect(response).to redirect_to(users_url)
+      end
 
-        it 'フラッシュメッセージに成功メッセージが含まれて表示されること' do
-          delete :destroy, params: { id: user.id }
-          expect(flash[:success]).to eq I18n.t('users.destroy.success')
-        end
+      it 'フラッシュメッセージに成功メッセージが含まれて表示されること' do
+        delete :destroy, params: { id: user.id }
+        expect(flash[:success]).to eq I18n.t('users.destroy.success')
       end
     end
   end

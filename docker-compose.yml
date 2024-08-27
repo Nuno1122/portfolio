@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: portfolio_development
+    ports:
+      - "5431:5432"
+  rails:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/portfolio
+    ports:
+      - "3030:3000"
+    depends_on:
+      - db
+  runner:
+    build: .
+    command: /bin/bash
+    volumes:
+      - .:/portfolio
+    ports:
+      - '3000:3000'
+      - '3003:3003'
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://portfolio:password@db:5432/portfolio_development
